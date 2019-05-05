@@ -6,21 +6,31 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
+// Load input Validation
+const validateRegisterInput = require("../../validation/register");
+
 // Load User Model
 const User = require("../../models/User");
 
 // @route  GET api/users/test
-// @desc   Tests users route
+// @desc   Тест
 // @access Public
 router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
 // @route  GET api/users/register
-// @desc   Register user
+// @desc   Регистрация
 // @access Public
 router.post("/register", (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+  // Check validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
-      return res.status(400).json({ email: "Email already exist" });
+      errors.email = "Пользователь с таким email уже существует";
+      return res.status(400).json(errors);
     } else {
       const avatar = gravatar.url(req.body.email, {
         s: "200", // Size
@@ -49,17 +59,19 @@ router.post("/register", (req, res) => {
 });
 
 // @route  GET api/users/login
-// @desc   Login user / Returning JWT Token
+// @desc   Логин / Возращаем токен
 // @access Public
 router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  //Find user by email
+  //Ищем юзера по email
   User.findOne({ email }).then(user => {
     //Check for user
     if (!user) {
-      return res.status(404).json({ email: "User not found" });
+      return res
+        .status(404)
+        .json({ email: "Пользователь с таким email не найден" });
     }
 
     //Check Password
@@ -88,14 +100,14 @@ router.post("/login", (req, res) => {
           }
         );
       } else {
-        return res.status(400).json({ password: "Password icorrect" });
+        return res.status(400).json({ password: "Неверный пароль" });
       }
     });
   });
 });
 
 // @route  GET api/users/current
-// @desc   Retrun current user
+// @desc   Возращает текущего пользователя
 // @access Private
 router.get(
   "/current",
