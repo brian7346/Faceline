@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
+// Схема для пользователя
 const UserSchema = new Schema({
   name: {
     type: String,

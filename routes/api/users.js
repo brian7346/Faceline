@@ -18,7 +18,7 @@ const User = require("../../models/User");
 router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
 // @route  GET api/users/register
-// @desc   Регистрация
+// @desc   Register/Регистрация
 // @access Public
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -33,9 +33,9 @@ router.post("/register", (req, res) => {
       return res.status(400).json(errors);
     } else {
       const avatar = gravatar.url(req.body.email, {
-        s: "200", // Size
-        r: "pg", // Rating
-        d: "mm" // Default
+        s: "200", // Size / Размер
+        r: "pg", // Rating / Рейтинг
+        d: "mm" // Default / По умолчанию
       });
       const newUser = new User({
         name: req.body.name,
@@ -59,15 +59,17 @@ router.post("/register", (req, res) => {
 });
 
 // @route  GET api/users/login
-// @desc   Логин / Возращаем токен
+// @desc   Login/ Логин / Возращаем токен
 // @access Public
 router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
+  // Find user by email
   //Ищем юзера по email
   User.findOne({ email }).then(user => {
     //Check for user
+    // Проверяем наличие пользователя
     if (!user) {
       return res
         .status(404)
@@ -75,17 +77,20 @@ router.post("/login", (req, res) => {
     }
 
     //Check Password
+    // Проверка пароля
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         // User matched
+        // Если пользователь совпадает
 
         const payload = {
           id: user.id,
           name: user.name,
           avatar: user.avatar
-        }; // Create JWT payload
+        }; // Create JWT payload / Payload для токена
 
         // Sign Token
+        // Токен для входа
         jwt.sign(
           payload,
           keys.secretOrKey,
@@ -107,7 +112,7 @@ router.post("/login", (req, res) => {
 });
 
 // @route  GET api/users/current
-// @desc   Возращает текущего пользователя
+// @desc   Current user/Возращает текущего пользователя
 // @access Private
 router.get(
   "/current",
