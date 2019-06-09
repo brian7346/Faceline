@@ -13,11 +13,11 @@ const validateEducationInput = require("../../validation/education");
 const Profile = require("../../models/Profile");
 
 // Load User Model
-// Добавляем модель польхователя
+// Добавляем модель пользователя
 const User = require("../../models/User");
 
 // @route  GET api/prolile/test
-// @desc   Tests prolile route/Тестовый запрос для профиля
+// @desc   Tests prolile route / Тестовый запрос для профиля
 // @access Public
 router.get("/test", (req, res) => res.json({ msg: "Profile Works" }));
 
@@ -166,7 +166,7 @@ router.post(
 );
 
 // @route  POST api/prolile/experience
-// @desc  Add  experience to profile/ Добавление опыта к профилю
+// @desc  Add  experience to profile / Добавление опыта к профилю
 // @access Private
 router.post(
   "/experience",
@@ -200,7 +200,7 @@ router.post(
 );
 
 // @route  POST api/prolile/education
-// @desc  Add  education to profile/ Добавление образования к профилю
+// @desc  Add  education to profile / Добавление образования к профилю
 // @access Private
 router.post(
   "/education",
@@ -229,6 +229,69 @@ router.post(
       profile.education.unshift(newEdu);
 
       profile.save().then(profile => res.json(profile));
+    });
+  }
+);
+
+// @route  DELETE api/prolile/experience/:exp_id
+// @desc  Delete experience from profile / Удаление опыта работы из профиля
+// @access Private
+router.delete(
+  "/experience/:exp_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        //Get remove index
+        const removeIndex = profile.experience
+          .map(item => item.id)
+          .indexOf(req.params.exp_id);
+
+        //Splice out of arr
+        profile.experience.splice(removeIndex, 1);
+
+        //Save
+        profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(400).json(err));
+  }
+);
+
+// @route  DELETE api/prolile/education/:edu_id
+// @desc  Delete education from profile / Удаление образования работы из профиля
+// @access Private
+router.delete(
+  "/education/:edu_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        //Get remove index
+        const removeIndex = profile.education
+          .map(item => item.id)
+          .indexOf(req.params.edu_id);
+
+        //Splice out of arr
+        profile.education.splice(removeIndex, 1);
+
+        //Save
+        profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(400).json(err));
+  }
+);
+
+// @route  DELETE api/prolile
+// @desc  Delete user and profile / Удаление пользователя и профиля
+// @access Private
+router.delete(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+      User.findOneAndRemove({ _id: req.user.id }).then(() =>
+        res.json({ success: true })
+      );
     });
   }
 );
