@@ -97,4 +97,70 @@ router.delete(
   }
 );
 
+// @route  POST api/posts/like/:id
+// @desc   Like post / Добавление лайка
+// @access Private
+router.post(
+  "/like/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        Post.findById(req.params.id).then(post => {
+          if (
+            post.likes.filter(like => like.user.toString() === req.user.id)
+              .length > 0
+          ) {
+            return res
+              .status(400)
+              .json({ alreadyliked: "Пользователь уже оценил этот пост" });
+          }
+
+          //Add user ID to likes arr
+          //Добавляем ID пользователя в массив с теми, кто уже поставил лайк
+          post.likes.unshift({ user: req.user.id });
+
+          post.save().then(post => res.json(post));
+        });
+      })
+      .catch(err => res.status(404).json({ postnotfound: "Пост не найден" }));
+  }
+);
+
+// @route  POST api/posts/unlike/:id
+// @desc   Unlike post / Удаление лайка
+// @access Private
+router.post(
+  "/unlike/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        Post.findById(req.params.id).then(post => {
+          if (
+            post.likes.filter(like => like.user.toString() === req.user.id)
+              .length === 0
+          ) {
+            return res
+              .status(400)
+              .json({ nonliked: "Вы еще не оценили этот пост" });
+          }
+
+          //Get remove index
+          //Получаем индекс который хотим удалить
+          const removeIndex = post.likes
+            .map(item => item.user.toString())
+            .indexOf(req.user.id);
+
+          //Splice out from arr
+          //Удаляем из массива пользоваетеля, который оценил пост
+          post.likes.splice(removeIndex, 1);
+
+          post.save().then(post => res.json(post));
+        });
+      })
+      .catch(err => res.status(404).json({ postnotfound: "Пост не найден" }));
+  }
+);
+
 module.exports = router;
