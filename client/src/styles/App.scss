@@ -1,10 +1,12 @@
+@import "./Variables.scss";
+
 img {
   width: 100%;
 }
 
 .landing {
   position: relative;
-  background: url("./img/showcase.jpg") no-repeat;
+  background: url("../img/showcase.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -34,6 +36,21 @@ img {
   height: 40px;
 }
 
-.form-control::placeholder {
-  color: #bbb !important;
+.form-control {
+  &::placeholder {
+    color: #bbb !important;
+  }
+}
+
+.current-bg {
+  background: $primary;
+  color: white;
+}
+
+.current-bg a {
+  color: white;
+  border-radius: 2px;
+  &:hover {
+    background: $primaryDark;
+  }
 }
