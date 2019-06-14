@@ -1,11 +1,12 @@
 import React from "react";
+import SwitchBtn from "../SwitchBtn/SwitchBtn";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-sm current-bg mb-4">
       <div className="container">
         <a className="navbar-brand" href="landing.html">
-          FaceLife
+          FaceLine
         </a>
         <button
           className="navbar-toggler"
@@ -38,6 +39,8 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
+
+          <SwitchBtn />
         </div>
       </div>
     </nav>
