@@ -62,10 +62,9 @@ img {
 }
 
 .navbar-collapse a {
-  border-radius: 2px;
-  color: $hoverLight;
+  color: $text;
+  transition: color 0.15s;
   &:hover {
-    background: $hoverLight;
-    color: $primary;
+    color: $hoverText;
   }
 }
