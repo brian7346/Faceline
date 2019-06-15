@@ -1,14 +1,17 @@
 import React from "react";
 import SwitchBtn from "../SwitchBtn/SwitchBtn";
 import classNames from "classnames";
+import { StateContext } from "../../context/Context";
 
 const Navbar = props => {
+  let { state, dispatch } = React.useContext(StateContext);
+
   let navbarClassNames = classNames({
     navbar: true,
     "navbar-expand-sm": true,
     "mb-4": true,
-    "current-bg": !props.darkMode,
-    "dark-bg": props.darkMode
+    "current-bg": !state.darkMode,
+    "dark-bg": state.darkMode
   });
   return (
     <nav className={navbarClassNames}>

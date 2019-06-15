@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SwitchBtn.scss";
+import { StateContext } from "../../context/Context";
 
 const SwitchBtn = props => {
-  const [isOn, toggleIsOn] = useState(false);
-  const switchState = isOn ? "switch on" : "switch off";
-  const update = () => {
-    toggleIsOn(!isOn);
-  };
-  return <div className={switchState} onClick={() => update()} />;
+  let { state, dispatch } = React.useContext(StateContext);
+
+  const switchState = state.darkMode ? "switch on" : "switch off";
+  const update = () => dispatch({ type: "CHANGE_THEME" });
+
+  return <div className={switchState} onClick={update} />;
 };
 
 export default SwitchBtn;
