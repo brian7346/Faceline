@@ -9,7 +9,7 @@ img {
   background: url("../img/showcase.jpg") no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: calc(100vh - 126px);
   margin-top: -24px;
   margin-bottom: -50px;
 }
@@ -47,10 +47,25 @@ img {
   color: white;
 }
 
-.current-bg a {
+.dark-bg {
+  background: $secondary;
   color: white;
+}
+
+.current-btn {
+  background: $primary;
+  color: white;
+}
+
+.navbar-brand {
+  color: unset;
+}
+
+.navbar-collapse a {
   border-radius: 2px;
+  color: $hoverLight;
   &:hover {
-    background: $primaryDark;
+    background: $hoverLight;
+    color: $primary;
   }
 }

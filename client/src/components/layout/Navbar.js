@@ -1,9 +1,17 @@
 import React from "react";
 import SwitchBtn from "../SwitchBtn/SwitchBtn";
+import classNames from "classnames";
 
-const Navbar = () => {
+const Navbar = props => {
+  let navbarClassNames = classNames({
+    navbar: true,
+    "navbar-expand-sm": true,
+    "mb-4": true,
+    "current-bg": !props.darkMode,
+    "dark-bg": props.darkMode
+  });
   return (
-    <nav className="navbar navbar-expand-sm current-bg mb-4">
+    <nav className={navbarClassNames}>
       <div className="container">
         <a className="navbar-brand" href="landing.html">
           FaceLine
