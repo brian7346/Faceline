@@ -1,10 +1,10 @@
 import React from "react";
 import SwitchBtn from "../SwitchBtn/SwitchBtn";
 import classNames from "classnames";
-import { StateContext } from "../../context/Context";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const Navbar = props => {
-  let { state, dispatch } = React.useContext(StateContext);
+  let { state, dispatch } = React.useContext(ThemeContext);
 
   let navbarClassNames = classNames({
     navbar: true,

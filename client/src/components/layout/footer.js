@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from "classnames";
-import { StateContext } from "../../context/Context";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const Footer = props => {
-  let { state, dispatch } = React.useContext(StateContext);
+  let { state, dispatch } = React.useContext(ThemeContext);
 
   let footerClassNames = classNames({
     "text-center": true,

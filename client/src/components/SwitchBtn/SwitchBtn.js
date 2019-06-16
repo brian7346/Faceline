@@ -1,9 +1,9 @@
 import React from "react";
 import "./SwitchBtn.scss";
-import { StateContext } from "../../context/Context";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const SwitchBtn = props => {
-  let { state, dispatch } = React.useContext(StateContext);
+  let { state, dispatch } = React.useContext(ThemeContext);
 
   const switchState = state.darkMode ? "switch on" : "switch off";
   const update = () => dispatch({ type: "CHANGE_THEME" });

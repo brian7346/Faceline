@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./styles/App.scss";
 import { Navbar, Landing, Footer } from "./components";
-import { StateProvider, StateContext } from "./context/Context";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
-    <StateProvider>
+    <ThemeProvider>
       <div className="App">
         <Navbar />
         <Landing />
         <Footer />
       </div>
-    </StateProvider>
+    </ThemeProvider>
   );
 }
 

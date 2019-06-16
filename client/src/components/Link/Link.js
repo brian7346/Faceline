@@ -1,10 +1,10 @@
 import React from "react";
 import "./Link.scss";
 import classNames from "classnames";
-import { StateContext } from "../../context/Context";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const Link = props => {
-  let { state, dispatch } = React.useContext(StateContext);
+  let { state, dispatch } = React.useContext(ThemeContext);
 
   let className = classNames({
     btn: true,
