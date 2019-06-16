@@ -1,5 +1,6 @@
 import React from "react";
-import SwitchBtn from "../SwitchBtn/SwitchBtn";
+
+import { SwitchBtn, CustomLink } from "../";
 import classNames from "classnames";
 import { ThemeContext } from "../../context/ThemeContext";
 
@@ -16,9 +17,7 @@ const Navbar = props => {
   return (
     <nav className={navbarClassNames}>
       <div className="container">
-        <a className="navbar-brand" href="landing.html">
-          FaceLine
-        </a>
+        <CustomLink title="FaceLine" navBrand to="/" />
         <button
           className="navbar-toggler"
           type="button"
@@ -31,23 +30,16 @@ const Navbar = props => {
         <div className="collapse navbar-collapse" id="mobile-nav">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link" href="profiles.html">
-                {" "}
-                Разработчики
-              </a>
+              <CustomLink title="Пользователи" navLink to="profiles" />
             </li>
           </ul>
 
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <a className="nav-link p4" href="login.html">
-                Войти
-              </a>
+              <CustomLink title="Войти" navLink padding to="login" />
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="register.html">
-                Зарегестрироваться
-              </a>
+              <CustomLink title="Зарегестрироваться" navLink to="register" />
             </li>
           </ul>
 

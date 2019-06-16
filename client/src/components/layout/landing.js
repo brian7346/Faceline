@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "../";
+import { CustomLink } from "../";
 
 const Landing = () => {
   return (
@@ -15,8 +15,13 @@ const Landing = () => {
                 помощь от других учасников
               </p>
               <hr />
-              <Link title="Зарегистрироваться" marginRight large />
-              <Link title="Войти" marginRight large btnLight />
+              <CustomLink
+                title="Зарегистрироваться"
+                marginRight
+                large
+                to="register"
+              />
+              <CustomLink title="Войти" marginRight large btnLight to="login" />
             </div>
           </div>
         </div>

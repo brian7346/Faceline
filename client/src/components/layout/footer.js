@@ -9,6 +9,7 @@ const Footer = props => {
     "text-center": true,
     "p-4": true,
     "mt-5": true,
+    "footer-absolute": true,
     "current-bg": !state.darkMode,
     "dark-bg": state.darkMode
   });

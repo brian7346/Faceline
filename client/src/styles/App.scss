@@ -4,6 +4,15 @@ img {
   width: 100%;
 }
 
+a {
+  outline: 0;
+  border: none;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
 .landing {
   position: relative;
   background: url("../img/showcase.jpg") no-repeat;
@@ -62,9 +71,17 @@ img {
 }
 
 .navbar-collapse a {
+  text-decoration: none;
   color: $text;
   transition: color 0.15s;
   &:hover {
     color: $hoverText;
   }
+}
+
+.footer-absolute {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
