@@ -10,7 +10,7 @@ const Navbar = props => {
   let navbarClassNames = classNames({
     navbar: true,
     "navbar-expand-sm": true,
-    "mb-4": true,
+    "mb-4": false,
     "current-bg": !state.darkMode,
     "dark-bg": state.darkMode
   });

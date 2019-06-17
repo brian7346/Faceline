@@ -7,8 +7,19 @@ img {
 a {
   outline: 0;
   border: none;
+  &:hover {
+    color: $hoverText !important;
+  }
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+.min-height {
+  min-height: calc(100vh - 130px);
+}
 .btn:focus {
   box-shadow: none;
 }
@@ -18,9 +29,7 @@ a {
   background: url("../img/showcase.jpg") no-repeat;
   background-size: cover;
   background-position: center;
-  height: calc(100vh - 126px);
-  margin-top: -24px;
-  margin-bottom: -50px;
+  height: calc(100vh - 130px);
 }
 
 .landing-inner {
@@ -51,6 +60,10 @@ a {
   }
 }
 
+.theme-wrapper {
+  min-height: 100vh;
+}
+
 .current-bg {
   background: $primary;
   color: white;
@@ -58,6 +71,11 @@ a {
 
 .dark-bg {
   background: $secondary;
+  color: white;
+}
+
+.dark-theme {
+  background: $secondaryDark;
   color: white;
 }
 
@@ -74,9 +92,10 @@ a {
   text-decoration: none;
   color: $text;
   transition: color 0.15s;
-  &:hover {
-    color: $hoverText;
-  }
+}
+
+.navbar {
+  transition: background 0.15s;
 }
 
 .footer-absolute {
