@@ -4,13 +4,11 @@ import { authReducer, initialState } from "../reducers/authreducer";
 let AuthContext = React.createContext();
 
 const AuthProvider = props => {
-  let [state, dispatch] = useReducer(authReducer, initialState);
-  let value = { state, dispatch };
+  let [auth, changleAuth] = useReducer(authReducer, initialState);
+  let value = { auth, changleAuth };
   return (
     <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>
   );
 };
 
-let AuthConsumer = AuthContext.Consumer;
-
-export { AuthContext, AuthProvider, AuthConsumer };
+export { AuthContext, AuthProvider };

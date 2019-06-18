@@ -5,15 +5,15 @@ import classNames from "classnames";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const CustomLink = props => {
-  let { state, dispatch } = React.useContext(ThemeContext);
+  let { theme } = React.useContext(ThemeContext);
 
   let className = classNames({
     btn: true,
     "btn-lg": props.large && !props.navLink && !props.navBrand,
     "dark-bg":
-      state.darkMode && !props.btnLight && !props.navLink && !props.navBrand,
+      theme.darkMode && !props.btnLight && !props.navLink && !props.navBrand,
     "current-bg":
-      !state.darkMode && !props.btnLight && !props.navLink && !props.navBrand,
+      !theme.darkMode && !props.btnLight && !props.navLink && !props.navBrand,
     "mr-2": props.marginRight,
     p4: props.padding,
     "btn-light": props.btnLight,

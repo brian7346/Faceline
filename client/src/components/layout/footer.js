@@ -3,13 +3,13 @@ import classNames from "classnames";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const Footer = props => {
-  let { state } = React.useContext(ThemeContext);
+  let { theme } = React.useContext(ThemeContext);
 
   let footerClassNames = classNames({
     "text-center": true,
     "p-4": true,
-    "current-bg": !state.darkMode,
-    "dark-bg": state.darkMode
+    "current-bg": !theme.darkMode,
+    "dark-bg": theme.darkMode
   });
   return (
     <footer className={footerClassNames}>

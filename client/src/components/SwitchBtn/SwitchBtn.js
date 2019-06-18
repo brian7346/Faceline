@@ -1,12 +1,13 @@
 import React from "react";
 import "./SwitchBtn.scss";
 import { ThemeContext } from "../../context/ThemeContext";
+import { changeThemeAction } from "../../actions/themeActions";
 
 const SwitchBtn = props => {
-  let { state, dispatch } = React.useContext(ThemeContext);
+  let { theme, changeTheme } = React.useContext(ThemeContext);
 
-  const switchState = state.darkMode ? "switch on" : "switch off";
-  const update = () => dispatch({ type: "CHANGE_THEME" });
+  const switchState = theme.darkMode ? "switch on" : "switch off";
+  const update = () => changeTheme(changeThemeAction());
 
   return <div className={switchState} onClick={update} />;
 };

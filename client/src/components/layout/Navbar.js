@@ -5,14 +5,14 @@ import classNames from "classnames";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const Navbar = props => {
-  let { state } = React.useContext(ThemeContext);
+  let { theme } = React.useContext(ThemeContext);
 
   let navbarClassNames = classNames({
     navbar: true,
     "navbar-expand-sm": true,
     "mb-4": false,
-    "current-bg": !state.darkMode,
-    "dark-bg": state.darkMode
+    "current-bg": !theme.darkMode,
+    "dark-bg": theme.darkMode
   });
   return (
     <nav className={navbarClassNames}>

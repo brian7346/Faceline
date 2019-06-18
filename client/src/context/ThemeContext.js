@@ -4,8 +4,8 @@ import { themeReducer, initialState } from "../reducers/themeReducer";
 let ThemeContext = React.createContext();
 
 const ThemeProvider = props => {
-  let [state, dispatch] = useReducer(themeReducer, initialState);
-  let value = { state, dispatch };
+  let [theme, changeTheme] = useReducer(themeReducer, initialState);
+  let value = { theme, changeTheme };
   return (
     <ThemeContext.Provider value={value}>
       {props.children}

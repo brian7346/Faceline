@@ -6,15 +6,15 @@ import { ThemeContext } from "../../context/ThemeContext";
 import "./CustomButton.scss";
 
 const CustomButton = props => {
-  let { state } = React.useContext(ThemeContext);
+  let { theme } = React.useContext(ThemeContext);
 
   let buttonClassNames = classNames({
     btn: true,
     "btn-block": true,
     "mt-4": props.marginTop,
-    "dark-bg": state.darkMode,
-    "dark-bg-button": state.darkMode,
-    "current-bg": !state.darkMode,
+    "dark-bg": theme.darkMode,
+    "dark-bg-button": theme.darkMode,
+    "current-bg": !theme.darkMode,
     "mr-2": props.marginRight
   });
   return <input type={props.type} className={buttonClassNames} />;

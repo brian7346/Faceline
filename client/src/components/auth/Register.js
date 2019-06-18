@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { CustomButton, CustomInput } from "../";
+import { AuthContext } from "../../context/AuthContext";
+import { registerUserAction } from "../../actions/authActions";
 import axios from "axios";
 const Register = () => {
+  let { auth, changleAuth } = useContext(AuthContext);
+
   const [name, changeName] = useState("");
   const [email, changeEmail] = useState("");
   const [password, changePassword] = useState("");
@@ -23,10 +27,7 @@ const Register = () => {
       password2
     };
 
-    axios
-      .post("/api/users/register", newUser)
-      .then(res => console.log(res.data))
-      .catch(err => handleErrors(err.response.data));
+    changleAuth(registerUserAction(newUser));
   };
   return (
     <div className="register min-height pt-4 pb-4">
