@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CustomButton, CustomInput } from "../";
+import axios from "axios";
 const Register = () => {
   const [name, changeName] = useState("");
   const [email, changeEmail] = useState("");
@@ -11,6 +12,7 @@ const Register = () => {
   const handleEmail = event => changeEmail(event.target.value);
   const handlePassword = event => changePassword(event.target.value);
   const handlePassword2 = event => changePassword2(event.target.value);
+  const handleErrors = errors => changeErrors(errors);
   const onSubmit = event => {
     event.preventDefault();
 
@@ -21,7 +23,10 @@ const Register = () => {
       password2
     };
 
-    console.log(newUser);
+    axios
+      .post("/api/users/register", newUser)
+      .then(res => console.log(res.data))
+      .catch(err => handleErrors(err.response.data));
   };
   return (
     <div className="register min-height pt-4 pb-4">
@@ -32,7 +37,7 @@ const Register = () => {
             <p className="lead text-center">
               Создайте свой аккаунт на FaceLine
             </p>
-            <form onSubmit={onSubmit}>
+            <form noValidate onSubmit={onSubmit}>
               <div className="form-group">
                 <CustomInput
                   type="text"
@@ -41,16 +46,18 @@ const Register = () => {
                   name="name"
                   value={name}
                   onChange={handleName}
+                  errors={errors}
                 />
               </div>
               <div className="form-group">
                 <CustomInput
                   type="email"
                   className="form-control form-control-lg"
-                  placeholder="Ваш Email"
+                  placeholder="Email"
                   name="email"
                   value={email}
                   onChange={handleEmail}
+                  errors={errors}
                 />
                 <small className="form-text text-muted">
                   Этот сайт использует Gravatar если вы хотите добавить
@@ -65,6 +72,7 @@ const Register = () => {
                   name="password"
                   value={password}
                   onChange={handlePassword}
+                  errors={errors}
                 />
               </div>
               <div className="form-group">
@@ -75,6 +83,7 @@ const Register = () => {
                   name="password2"
                   value={password2}
                   onChange={handlePassword2}
+                  errors={errors}
                 />
               </div>
               <CustomButton type="submit" marginTop />

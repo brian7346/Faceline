@@ -10,19 +10,22 @@ import {
   AppWrapper
 } from "./components";
 import { ThemeProvider } from "./context/ThemeContext";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
         <AppWrapper>
-          <Navbar />
-          <Route exact path="/" component={Landing} />
-          <div className="container">
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-          </div>
-          <Footer />
+          <AuthProvider>
+            <Navbar />
+            <Route exact path="/" component={Landing} />
+            <div className="container">
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+            </div>
+            <Footer />
+          </AuthProvider>
         </AppWrapper>
       </Router>
     </ThemeProvider>

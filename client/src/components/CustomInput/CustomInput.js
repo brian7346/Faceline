@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 const CustomInput = props => {
   let inputClassNames = classNames({
     "form-control ": true,
-    "form-control-lg": true
+    "form-control-lg": true,
+    "is-invalid": props.errors[props.name]
   });
 
   return (
@@ -18,6 +19,10 @@ const CustomInput = props => {
         value={props.value}
         onChange={props.onChange}
       />
+
+      {props.errors[props.name] && (
+        <div className="invalid-feedback">{props.errors[props.name]}</div>
+      )}
     </div>
   );
 };
@@ -27,7 +32,8 @@ CustomInput.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  errors: PropTypes.object
 };
 
 CustomInput.defaultProps = {
@@ -35,7 +41,8 @@ CustomInput.defaultProps = {
   placeholder: "",
   name: "",
   value: "",
-  onChange: () => null
+  onChange: () => null,
+  errors: {}
 };
 
 export default CustomInput;

@@ -18,12 +18,13 @@ const User = require("../../models/User");
 // @access Public
 router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
-// @route  GET api/users/register
+// @route  POST api/users/register
 // @desc   Register/Регистрация
 // @access Public
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
   // Check validation
+  // Проверяем на ошибки
   if (!isValid) {
     return res.status(400).json(errors);
   }

@@ -33,7 +33,7 @@ module.exports = function validateRegisterInput(data) {
     errors.password = "Пароль должен быть от 6-ти до 30-ти символов";
   }
 
-  if (validator.isEmail(data.password2)) {
+  if (validator.isEmpty(data.password2)) {
     errors.password2 = "Вы не подтвердили пароль";
   }
 
