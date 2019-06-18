@@ -1,10 +1,12 @@
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import { ThemeContext } from "../../context/ThemeContext";
+
 import "./CustomButton.scss";
 
 const CustomButton = props => {
-  let { state, dispatch } = React.useContext(ThemeContext);
+  let { state } = React.useContext(ThemeContext);
 
   let buttonClassNames = classNames({
     btn: true,
@@ -15,7 +17,19 @@ const CustomButton = props => {
     "current-bg": !state.darkMode,
     "mr-2": props.marginRight
   });
-  return <input type="submit" class={buttonClassNames} />;
+  return <input type={props.type} className={buttonClassNames} />;
+};
+
+CustomButton.propTypes = {
+  type: PropTypes.string,
+  marginTop: PropTypes.bool,
+  marginRight: PropTypes.bool
+};
+
+CustomButton.defaultProps = {
+  type: "",
+  marginTop: false,
+  marginRight: false
 };
 
 export default CustomButton;

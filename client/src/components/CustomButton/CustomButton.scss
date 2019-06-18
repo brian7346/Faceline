@@ -1,7 +1,7 @@
 @import "../../styles/Variables.scss";
 
 .dark-bg-button {
-  box-shadow: 0 0 2px snow;
+  box-shadow: 0 0 3px snow;
   &:hover {
     color: $hoverText !important;
   }

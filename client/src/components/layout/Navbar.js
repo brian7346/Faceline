@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const Navbar = props => {
-  let { state, dispatch } = React.useContext(ThemeContext);
+  let { state } = React.useContext(ThemeContext);
 
   let navbarClassNames = classNames({
     navbar: true,
