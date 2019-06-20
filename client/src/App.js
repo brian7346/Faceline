@@ -11,6 +11,7 @@ import {
 } from "./components";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AuthProvider } from "./context/AuthContext";
+import { ErrorProvider } from "./context/ErrorContext";
 
 function App() {
   return (
@@ -21,8 +22,10 @@ function App() {
             <Navbar />
             <Route exact path="/" component={Landing} />
             <div className="container">
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
+              <ErrorProvider>
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
+              </ErrorProvider>
             </div>
             <Footer />
           </AuthProvider>

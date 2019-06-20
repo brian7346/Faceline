@@ -1,22 +1,24 @@
 import React, { useState, useContext } from "react";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
 import { CustomButton, CustomInput } from "../";
 import { AuthContext } from "../../context/AuthContext";
-import { registerUserAction } from "../../actions/authActions";
-import axios from "axios";
-const Register = () => {
+import { ErrorContext } from "../../context/ErrorContext";
+import { changeErrorsAction } from "../../actions/errorsAction";
+const Register = withRouter(props => {
   let { auth, changleAuth } = useContext(AuthContext);
+  let { errors, changeErrors } = useContext(ErrorContext);
 
   const [name, changeName] = useState("");
   const [email, changeEmail] = useState("");
   const [password, changePassword] = useState("");
   const [password2, changePassword2] = useState("");
-  const [errors, changeErrors] = useState({});
 
   const handleName = event => changeName(event.target.value);
   const handleEmail = event => changeEmail(event.target.value);
   const handlePassword = event => changePassword(event.target.value);
   const handlePassword2 = event => changePassword2(event.target.value);
-  const handleErrors = errors => changeErrors(errors);
+
   const onSubmit = event => {
     event.preventDefault();
 
@@ -27,7 +29,10 @@ const Register = () => {
       password2
     };
 
-    changleAuth(registerUserAction(newUser));
+    axios
+      .post("/api/users/register/", newUser)
+      .then(res => props.history.push("/login"))
+      .catch(err => changeErrors(changeErrorsAction(err.response.data)));
   };
   return (
     <div className="register min-height pt-4 pb-4">
@@ -94,6 +99,6 @@ const Register = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Register;

@@ -13,6 +13,4 @@ const ThemeProvider = props => {
   );
 };
 
-let ThemeConsumer = ThemeContext.Consumer;
-
-export { ThemeContext, ThemeProvider, ThemeConsumer };
+export { ThemeContext, ThemeProvider };

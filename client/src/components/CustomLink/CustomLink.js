@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Link.scss";
 import classNames from "classnames";
 import { ThemeContext } from "../../context/ThemeContext";
+import PropTypes from "prop-types";
 
 const CustomLink = props => {
   let { theme } = React.useContext(ThemeContext);
@@ -25,6 +26,24 @@ const CustomLink = props => {
       {props.title}
     </Link>
   );
+};
+
+CustomLink.propTypes = {
+  large: PropTypes.bool,
+  navLink: PropTypes.bool,
+  navBrand: PropTypes.bool,
+  btnLight: PropTypes.bool,
+  padding: PropTypes.bool,
+  marginRight: PropTypes.bool
+};
+
+CustomLink.defaultProps = {
+  large: false,
+  navLink: false,
+  navBrand: false,
+  btnLight: false,
+  padding: false,
+  marginRight: false
 };
 
 export default CustomLink;
