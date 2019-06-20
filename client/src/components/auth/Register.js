@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { CustomButton, CustomInput } from "../";
 import { AuthContext } from "../../context/AuthContext";
 import { ErrorContext } from "../../context/ErrorContext";
-import { changeErrorsAction } from "../../actions/errorsAction";
+import { registerUserAction } from "../../actions/authActions";
 const Register = withRouter(props => {
   let { auth, changleAuth } = useContext(AuthContext);
   let { errors, changeErrors } = useContext(ErrorContext);
@@ -29,10 +29,7 @@ const Register = withRouter(props => {
       password2
     };
 
-    axios
-      .post("/api/users/register/", newUser)
-      .then(res => props.history.push("/login"))
-      .catch(err => changeErrors(changeErrorsAction(err.response.data)));
+    registerUserAction(newUser, changeErrors, props.history);
   };
   return (
     <div className="register min-height pt-4 pb-4">
