@@ -1,6 +1,6 @@
 import axios from "axios";
-import { setAuthToken } from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import { setAuthToken } from "../utils/setAuthToken";
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 
 // Register User
@@ -8,7 +8,7 @@ import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 export const registerUserAction = (userData, changeErrors, history) => {
   axios
     .post("/api/users/register/", userData)
-    .then(res => history.push("/login"))
+    .then(() => history.push("/login"))
     .catch(err =>
       changeErrors({
         type: GET_ERRORS,
@@ -18,7 +18,7 @@ export const registerUserAction = (userData, changeErrors, history) => {
 };
 // Login - Get User Token
 // Вход - получение токена для пользователя
-export const loginUserAction = (userData, changeErrors) => {
+export const loginUserAction = (userData, changeAuth, changeErrors) => {
   axios
     .post("/api/users/login/", userData)
     .then(res => {
@@ -36,6 +36,7 @@ export const loginUserAction = (userData, changeErrors) => {
       const decoded = jwt_decode(token);
 
       //Set current user
+      changeAuth(setCurrentUser(decoded));
     })
     .catch(err =>
       changeErrors({
@@ -50,4 +51,18 @@ export const setCurrentUser = decoded => {
     type: SET_CURRENT_USER,
     payload: decoded
   };
+};
+
+//Log user out
+export const logoutUserAction = changeUser => {
+  //Remove token from localstorage
+  //Удаляем Токен из localstorage
+  localStorage.removeItem("jwtToken");
+
+  //Remove auth header
+  //Удаляем хедер из axios
+  setAuthToken(false);
+
+  //Set current user to {}
+  changeUser(setCurrentUser({}));
 };

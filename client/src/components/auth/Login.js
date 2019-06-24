@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-// import classNames from "classnames";
-// import { ThemeContext } from "../../context/ThemeContext";
+import React, { useState, useContext, useEffect } from "react";
+import { withRouter } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { ErrorContext } from "../../context/ErrorContext";
 import { CustomButton, CustomInput } from "../";
+import { loginUserAction } from "../../actions/authActions";
 
-const Login = () => {
+const Login = withRouter(props => {
+  let { auth, changleAuth } = useContext(AuthContext);
+  let { errors, changeErrors } = useContext(ErrorContext);
+
   const [email, changeEmail] = useState("");
   const [password, changePassword] = useState("");
-  const [errors, changeErrors] = useState({});
 
   const handleEmail = event => changeEmail(event.target.value);
   const handlePassword = event => changePassword(event.target.value);
@@ -18,8 +22,14 @@ const Login = () => {
       password
     };
 
-    console.log(user);
+    loginUserAction(user, changleAuth, changeErrors);
   };
+
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      props.history.push("/dashboard");
+    }
+  }, [auth.isAuthenticated, props.history]);
   return (
     <div className="login min-height pt-4 pb-4">
       <div className="container">
@@ -37,6 +47,7 @@ const Login = () => {
                   name="email"
                   value={email}
                   onChange={handleEmail}
+                  errors={errors}
                 />
               </div>
               <div className="form-group">
@@ -46,6 +57,7 @@ const Login = () => {
                   name="password"
                   value={password}
                   onChange={handlePassword}
+                  errors={errors}
                 />
               </div>
               <CustomButton type="submit" marginTop />
@@ -55,6 +67,6 @@ const Login = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Login;

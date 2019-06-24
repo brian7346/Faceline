@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { SwitchBtn, CustomLink } from "../";
 import classNames from "classnames";
 import { ThemeContext } from "../../context/ThemeContext";
+import { AuthContext } from "../../context/AuthContext";
+import { logoutUserAction } from "../../actions/authActions";
 
 const Navbar = props => {
-  let { theme } = React.useContext(ThemeContext);
+  let { theme } = useContext(ThemeContext);
+  let { auth, changleAuth } = useContext(AuthContext);
 
   let navbarClassNames = classNames({
     navbar: true,
@@ -14,6 +17,40 @@ const Navbar = props => {
     "current-bg": !theme.darkMode,
     "dark-bg": theme.darkMode
   });
+
+  const onLogoutClick = event => {
+    event.preventDefault();
+    logoutUserAction(changleAuth);
+  };
+  const authLinks = (
+    <ul className="navbar-nav ml-auto">
+      <li className="nav-item">
+        {/* <CustomLink title="Выйти" navLink padding to="login" /> */}
+        <a href="" onClick={onLogoutClick} className="nav-link">
+          <img
+            className="rounded-circle"
+            src={auth.user.avatar}
+            alt={auth.user.avatar}
+            style={{ width: 25, marginRight: 5 }}
+            title="Вы должны присоединить ваш аккаунт на Gravatar, чтобы увидеть аватар "
+          />
+          Выйти
+        </a>
+      </li>
+    </ul>
+  );
+
+  const guestLinks = (
+    <ul className="navbar-nav ml-auto">
+      <li className="nav-item">
+        <CustomLink title="Войти" navLink padding to="login" />
+      </li>
+      <li className="nav-item">
+        <CustomLink title="Зарегестрироваться" navLink to="register" />
+      </li>
+    </ul>
+  );
+
   return (
     <nav className={navbarClassNames}>
       <div className="container">
@@ -34,14 +71,7 @@ const Navbar = props => {
             </li>
           </ul>
 
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <CustomLink title="Войти" navLink padding to="login" />
-            </li>
-            <li className="nav-item">
-              <CustomLink title="Зарегестрироваться" navLink to="register" />
-            </li>
-          </ul>
+          {auth.isAuthenticated ? authLinks : guestLinks}
 
           <SwitchBtn />
         </div>

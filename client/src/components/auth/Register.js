@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
-import axios from "axios";
+import React, { useState, useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { CustomButton, CustomInput } from "../";
-import { AuthContext } from "../../context/AuthContext";
 import { ErrorContext } from "../../context/ErrorContext";
+import { AuthContext } from "../../context/AuthContext";
 import { registerUserAction } from "../../actions/authActions";
+
 const Register = withRouter(props => {
-  let { auth, changleAuth } = useContext(AuthContext);
   let { errors, changeErrors } = useContext(ErrorContext);
+  let { auth } = useContext(AuthContext);
 
   const [name, changeName] = useState("");
   const [email, changeEmail] = useState("");
@@ -31,6 +31,12 @@ const Register = withRouter(props => {
 
     registerUserAction(newUser, changeErrors, props.history);
   };
+
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      props.history.push("/dashboard");
+    }
+  }, [auth.isAuthenticated, props.history]);
   return (
     <div className="register min-height pt-4 pb-4">
       <div className="container">
@@ -64,7 +70,7 @@ const Register = withRouter(props => {
                 />
                 <small className="form-text text-muted">
                   Этот сайт использует Gravatar если вы хотите добавить
-                  изображжение для профиля используйте email из Gravatar
+                  изображение для профиля используйте email из Gravatar
                 </small>
               </div>
               <div className="form-group">

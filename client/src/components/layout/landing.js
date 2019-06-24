@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { withRouter } from "react-router-dom";
 import { CustomLink } from "../";
+import { AuthContext } from "../../context/AuthContext";
 
-const Landing = () => {
+const Landing = withRouter(props => {
+  let { auth } = useContext(AuthContext);
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      props.history.push("/dashboard");
+    }
+  }, [auth.isAuthenticated, props.history]);
   return (
     <div className="landing">
       <div className="dark-overlay landing-inner text-light">
@@ -28,6 +36,6 @@ const Landing = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Landing;
