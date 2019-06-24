@@ -18,8 +18,12 @@ const CustomInput = props => {
         name={props.name}
         value={props.value}
         onChange={props.onChange}
+        disabled={props.disabled}
       />
 
+      {props.info && (
+        <small className="form-text text-muted">{props.info}</small>
+      )}
       {props.errors[props.name] && (
         <div className="invalid-feedback">{props.errors[props.name]}</div>
       )}
@@ -29,19 +33,17 @@ const CustomInput = props => {
 
 CustomInput.propTypes = {
   type: PropTypes.string,
-  placeholder: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  errors: PropTypes.object
+  placeholder: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  errors: PropTypes.object,
+  disabled: PropTypes.bool,
+  info: PropTypes.string
 };
 
 CustomInput.defaultProps = {
-  type: "",
-  placeholder: "",
-  name: "",
-  value: "",
-  onChange: () => null,
+  type: "text",
   errors: {}
 };
 

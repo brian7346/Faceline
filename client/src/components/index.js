@@ -8,3 +8,4 @@ export { default as Register } from "./auth/Register";
 export { default as CustomLink } from "./CustomLink/CustomLink";
 export { default as CustomButton } from "./CustomButton/CustomButton";
 export { default as CustomInput } from "./CustomInput/CustomInput";
+export { default as Dashboard } from "./Dashboard/Dashboard";

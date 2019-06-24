@@ -4,11 +4,14 @@ import { SwitchBtn, CustomLink } from "../";
 import classNames from "classnames";
 import { ThemeContext } from "../../context/ThemeContext";
 import { AuthContext } from "../../context/AuthContext";
+import { ProfileContext } from "../../context/ProfileContext";
 import { logoutUserAction } from "../../actions/authActions";
+import { clearCurrentProfileAction } from "../../actions/profileActions";
 
 const Navbar = props => {
   let { theme } = useContext(ThemeContext);
   let { auth, changleAuth } = useContext(AuthContext);
+  let { changeProfile } = useContext(ProfileContext);
 
   let navbarClassNames = classNames({
     navbar: true,
@@ -20,8 +23,10 @@ const Navbar = props => {
 
   const onLogoutClick = event => {
     event.preventDefault();
+    changeProfile(clearCurrentProfileAction());
     logoutUserAction(changleAuth);
   };
+
   const authLinks = (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">

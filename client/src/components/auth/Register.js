@@ -67,11 +67,9 @@ const Register = withRouter(props => {
                   value={email}
                   onChange={handleEmail}
                   errors={errors}
+                  info="Этот сайт использует Gravatar если вы хотите добавить
+                  изображение для профиля используйте email из Gravatar"
                 />
-                <small className="form-text text-muted">
-                  Этот сайт использует Gravatar если вы хотите добавить
-                  изображение для профиля используйте email из Gravatar
-                </small>
               </div>
               <div className="form-group">
                 <CustomInput

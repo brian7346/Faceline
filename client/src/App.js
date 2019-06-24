@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./utils/setAuthToken";
 import { setCurrentUser, logoutUserAction } from "../src/actions/authActions";
+import { clearCurrentProfileAction } from "../src/actions/profileActions";
 
 import "./styles/App.scss";
 import {
@@ -11,14 +12,17 @@ import {
   Footer,
   Register,
   Login,
-  AppWrapper
+  AppWrapper,
+  Dashboard
 } from "./components";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AuthContext } from "./context/AuthContext";
 import { ErrorProvider } from "./context/ErrorContext";
+import { ProfileContext } from "./context/ProfileContext";
 
 const App = () => {
   const { changleAuth } = useContext(AuthContext);
+  const { changeProfile } = useContext(ProfileContext);
 
   //Check for token
   //Проверяем наличие токена
@@ -37,8 +41,8 @@ const App = () => {
         //Выходим из аккаунта
         logoutUserAction(changleAuth);
 
-        //TODO: Clear current profile
-
+        //Clear current profile
+        changeProfile(clearCurrentProfileAction());
         //Redirect to login
         window.location.href = "/login";
       }
@@ -56,6 +60,7 @@ const App = () => {
             <ErrorProvider>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/dashboard" component={Dashboard} />
             </ErrorProvider>
           </div>
           <Footer />
