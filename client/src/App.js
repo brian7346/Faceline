@@ -21,7 +21,7 @@ import { ErrorProvider } from "./context/ErrorContext";
 import { ProfileContext } from "./context/ProfileContext";
 
 const App = () => {
-  const { changleAuth } = useContext(AuthContext);
+  const { auth, changleAuth } = useContext(AuthContext);
   const { changeProfile } = useContext(ProfileContext);
 
   //Check for token
@@ -47,7 +47,6 @@ const App = () => {
         window.location.href = "/login";
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
