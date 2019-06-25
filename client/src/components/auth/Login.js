@@ -40,26 +40,22 @@ const Login = withRouter(props => {
               Войдите в ваш аккаунт на FaceLine
             </p>
             <form onSubmit={onSubmit}>
-              <div className="form-group">
-                <CustomInput
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  value={email}
-                  onChange={handleEmail}
-                  errors={errors}
-                />
-              </div>
-              <div className="form-group">
-                <CustomInput
-                  type="password"
-                  placeholder="Пароль"
-                  name="password"
-                  value={password}
-                  onChange={handlePassword}
-                  errors={errors}
-                />
-              </div>
+              <CustomInput
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={handleEmail}
+                errors={errors}
+              />
+              <CustomInput
+                type="password"
+                placeholder="Пароль"
+                name="password"
+                value={password}
+                onChange={handlePassword}
+                errors={errors}
+              />
               <CustomButton type="submit" marginTop />
             </form>
           </div>

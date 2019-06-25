@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 import "./CustomButton.scss";
 

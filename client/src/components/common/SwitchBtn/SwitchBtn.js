@@ -1,7 +1,7 @@
 import React from "react";
 import "./SwitchBtn.scss";
-import { ThemeContext } from "../../context/ThemeContext";
-import { changeThemeAction } from "../../actions/themeActions";
+import { ThemeContext } from "../../../context/ThemeContext";
+import { changeThemeAction } from "../../../actions/themeActions";
 
 const SwitchBtn = props => {
   let { theme, changeTheme } = React.useContext(ThemeContext);

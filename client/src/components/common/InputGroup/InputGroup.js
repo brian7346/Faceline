@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-const CustomInput = props => {
+const InputGroup = props => {
   let inputClassNames = classNames({
     "form-control ": true,
     "form-control-lg": true,
@@ -10,7 +10,12 @@ const CustomInput = props => {
   });
 
   return (
-    <div>
+    <div className="input-group mb-3">
+      <div className="input-group-prepend">
+        <span className="input-group-text">
+          <i className={props.icon} />
+        </span>
+      </div>
       <input
         type={props.type}
         className={inputClassNames}
@@ -18,12 +23,8 @@ const CustomInput = props => {
         name={props.name}
         value={props.value}
         onChange={props.onChange}
-        disabled={props.disabled}
       />
 
-      {props.info && (
-        <small className="form-text text-muted">{props.info}</small>
-      )}
       {props.errors[props.name] && (
         <div className="invalid-feedback">{props.errors[props.name]}</div>
       )}
@@ -31,20 +32,18 @@ const CustomInput = props => {
   );
 };
 
-CustomInput.propTypes = {
-  type: PropTypes.string,
+InputGroup.propTypes = {
+  type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object,
-  disabled: PropTypes.bool,
-  info: PropTypes.string
+  icon: PropTypes.string.isRequired
 };
 
-CustomInput.defaultProps = {
-  type: "text",
+InputGroup.defaultProps = {
   errors: {}
 };
 
-export default CustomInput;
+export default InputGroup;

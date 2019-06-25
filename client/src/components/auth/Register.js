@@ -36,7 +36,7 @@ const Register = withRouter(props => {
     if (auth.isAuthenticated) {
       props.history.push("/dashboard");
     }
-  }, [auth.isAuthenticated, props.history]);
+  }, [auth.isAuthenticated]);
   return (
     <div className="register min-height pt-4 pb-4">
       <div className="container">
@@ -47,52 +47,44 @@ const Register = withRouter(props => {
               Создайте свой аккаунт на FaceLine
             </p>
             <form noValidate onSubmit={onSubmit}>
-              <div className="form-group">
-                <CustomInput
-                  type="text"
-                  className="form-control form-control-lg"
-                  placeholder="Имя"
-                  name="name"
-                  value={name}
-                  onChange={handleName}
-                  errors={errors}
-                />
-              </div>
-              <div className="form-group">
-                <CustomInput
-                  type="email"
-                  className="form-control form-control-lg"
-                  placeholder="Email"
-                  name="email"
-                  value={email}
-                  onChange={handleEmail}
-                  errors={errors}
-                  info="Этот сайт использует Gravatar если вы хотите добавить
+              <CustomInput
+                type="text"
+                className="form-control form-control-lg"
+                placeholder="Имя"
+                name="name"
+                value={name}
+                onChange={handleName}
+                errors={errors}
+              />
+              <CustomInput
+                type="email"
+                className="form-control form-control-lg"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={handleEmail}
+                errors={errors}
+                info="Этот сайт использует Gravatar если вы хотите добавить
                   изображение для профиля используйте email из Gravatar"
-                />
-              </div>
-              <div className="form-group">
-                <CustomInput
-                  type="password"
-                  className="form-control form-control-lg"
-                  placeholder="Пароль"
-                  name="password"
-                  value={password}
-                  onChange={handlePassword}
-                  errors={errors}
-                />
-              </div>
-              <div className="form-group">
-                <CustomInput
-                  type="password"
-                  className="form-control form-control-lg"
-                  placeholder="Подтвердите пароль"
-                  name="password2"
-                  value={password2}
-                  onChange={handlePassword2}
-                  errors={errors}
-                />
-              </div>
+              />
+              <CustomInput
+                type="password"
+                className="form-control form-control-lg"
+                placeholder="Пароль"
+                name="password"
+                value={password}
+                onChange={handlePassword}
+                errors={errors}
+              />
+              <CustomInput
+                type="password"
+                className="form-control form-control-lg"
+                placeholder="Подтвердите пароль"
+                name="password2"
+                value={password2}
+                onChange={handlePassword2}
+                errors={errors}
+              />
               <CustomButton type="submit" marginTop />
             </form>
           </div>

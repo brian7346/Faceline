@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Link.scss";
 import classNames from "classnames";
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 import PropTypes from "prop-types";
 
 const CustomLink = props => {

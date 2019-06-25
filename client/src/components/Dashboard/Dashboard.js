@@ -37,7 +37,7 @@ const Dashboard = () => {
     getCurrentProfileAction(changeProfile);
   }, []);
   return (
-    <div className="dashboard min-height">
+    <div className="dashboard min-height pt-4 pb-4">
       <div className="container">
         <div className="row">
           <div className="col-md-12">
