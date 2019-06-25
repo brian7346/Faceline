@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./utils/setAuthToken";
 import { setCurrentUser, logoutUserAction } from "../src/actions/authActions";
@@ -13,7 +13,8 @@ import {
   Register,
   Login,
   AppWrapper,
-  Dashboard
+  Dashboard,
+  PrivateRoute
 } from "./components";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AuthContext } from "./context/AuthContext";
@@ -59,7 +60,9 @@ const App = () => {
             <ErrorProvider>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
             </ErrorProvider>
           </div>
           <Footer />

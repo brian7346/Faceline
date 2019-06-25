@@ -10,3 +10,4 @@ export { default as CustomButton } from "./CustomButton/CustomButton";
 export { default as CustomInput } from "./CustomInput/CustomInput";
 export { default as Dashboard } from "./Dashboard/Dashboard";
 export { default as Spinner } from "./Spinner/Spinner";
+export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
