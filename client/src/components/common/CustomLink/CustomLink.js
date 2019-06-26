@@ -18,6 +18,7 @@ const CustomLink = props => {
     "current-bg":
       !theme.darkMode && !props.btnLight && !props.navLink && !props.navBrand,
     "mr-2": props.marginRight,
+    "ml-2": props.marginLeft,
     p4: props.padding,
     "btn-light": props.btnLight,
     "nav-link": props.navLink,
@@ -31,21 +32,14 @@ const CustomLink = props => {
 };
 
 CustomLink.propTypes = {
+  title: PropTypes.string.isRequired,
   large: PropTypes.bool,
   navLink: PropTypes.bool,
   navBrand: PropTypes.bool,
   btnLight: PropTypes.bool,
   padding: PropTypes.bool,
-  marginRight: PropTypes.bool
-};
-
-CustomLink.defaultProps = {
-  large: false,
-  navLink: false,
-  navBrand: false,
-  btnLight: false,
-  padding: false,
-  marginRight: false
+  marginRight: PropTypes.bool,
+  marginLeft: PropTypes.bool
 };
 
 export default CustomLink;

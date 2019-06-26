@@ -11,11 +11,12 @@ const CustomButton = props => {
   let buttonClassNames = classNames({
     btn: true,
     "btn-block": props.btnBlock,
-    "mt-4": props.marginTop,
-    "dark-bg": theme.darkMode,
+    "dark-bg": theme.darkMode && !props.btnDanger,
     "dark-bg-button": theme.darkMode,
     "btn-light": props.btnLight && !theme.darkMode,
-    "current-bg": !theme.darkMode && !props.btnLight,
+    "current-bg": !theme.darkMode && !props.btnLight && !props.btnDanger,
+    "btn-danger": props.btnDanger,
+    "mt-4": props.marginTop,
     "mr-2": props.marginRight,
     "mb-3": props.marginBottom
   });
@@ -34,11 +35,12 @@ const CustomButton = props => {
 
 CustomButton.propTypes = {
   type: PropTypes.string,
-  tvalueype: PropTypes.string,
+  value: PropTypes.string,
   marginTop: PropTypes.bool,
   marginRight: PropTypes.bool,
   marginBottom: PropTypes.bool,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  btnDanger: PropTypes.bool
 };
 
 CustomButton.defaultProps = {

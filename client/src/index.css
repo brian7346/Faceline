@@ -11,3 +11,75 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.menu-3 .nav-btn {
+  overflow: hidden;
+  width: 60px;
+  height: 44px;
+  left: 50%;
+  margin-left: -30px;
+  top: 50%;
+  margin-top: -22px;
+  cursor: pointer;
+  position: absolute;
+  margin-right: -30px;
+  z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.menu-3 .bar {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  height: 4px;
+  background-color: #5ca4a9;
+  -webkit-transition: background-color 0.3s ease, opacity 0.3s ease,
+    -webkit-transform 0.3s ease;
+  transition: background-color 0.3s ease, opacity 0.3s ease,
+    -webkit-transform 0.3s ease;
+  -o-transition: background-color 0.3s ease, opacity 0.3s ease,
+    transform 0.3s ease;
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease,
+    -webkit-transform 0.3s ease;
+  display: block;
+  top: 20px;
+}
+
+.menu-3 .bar:first-child {
+  top: 10px;
+}
+
+.menu-3 .bar:last-child {
+  top: 30px;
+}
+
+.menu-3 .nav-btn:hover .bar {
+  background-color: #ed6a5a;
+  -webkit-transform: translateX(120%);
+  -ms-transform: translateX(120%);
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+.menu-3 .nav-btn:hover .bar:first-of-type,
+.menu-3 .nav-btn:hover .bar:last-of-type {
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.menu-3 .nav-btn:hover .bar:first-of-type {
+  -webkit-transform: translateY(10px) rotate(45deg);
+  -ms-transform: translateY(10px) rotate(45deg);
+  transform: translateY(10px) rotate(45deg);
+}
+
+.menu-3 .nav-btn:hover .bar:last-of-type {
+  -webkit-transform: translateY(-10px) rotate(-45deg);
+  -ms-transform: translateY(-10px) rotate(-45deg);
+  transform: translateY(-10px) rotate(-45deg);
+}

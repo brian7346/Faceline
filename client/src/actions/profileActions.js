@@ -3,7 +3,8 @@ import {
   GET_PROFILE,
   PROFILE_LOADING,
   GET_ERRORS,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  SET_CURRENT_USER
 } from "./types";
 
 export const getCurrentProfileAction = changeProfile => {
@@ -16,7 +17,7 @@ export const getCurrentProfileAction = changeProfile => {
         payload: res.data
       });
     })
-    .catch(err => {
+    .catch(() => {
       changeProfile({
         type: GET_PROFILE,
         payload: {}
@@ -36,6 +37,27 @@ export const createProfileAction = (profileData, history, changeErrors) => {
         payload: err.response.data
       })
     );
+};
+
+//Delete account & profile
+//Удаляем аккаунт и профиль
+export const deleteAccountAction = (changleAuth, changeErrors) => {
+  if (window.confirm("Вы уверены? Аккаунт нельзя будет востановить")) {
+    axios
+      .delete("/api/profile")
+      .then(res =>
+        changleAuth({
+          type: SET_CURRENT_USER,
+          payload: {}
+        })
+      )
+      .catch(err =>
+        changeErrors({
+          type: GET_ERRORS,
+          payload: err.response.data
+        })
+      );
+  }
 };
 
 //Profile Loading

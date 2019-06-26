@@ -29,7 +29,7 @@ const Login = props => {
     if (auth.isAuthenticated) {
       props.history.push("/dashboard");
     }
-  }, [auth.isAuthenticated, props.history]);
+  });
   return (
     <div className="login min-height pt-4 pb-4">
       <div className="container">

@@ -28,10 +28,13 @@ const Navbar = props => {
   };
 
   const authLinks = (
-    <ul className="navbar-nav ml-auto">
-      <li className="nav-item">
-        {/* <CustomLink title="Выйти" navLink padding to="login" /> */}
-        <a href="" onClick={onLogoutClick} className="nav-link">
+    <ul className="navbar-nav ml-auto ">
+      <li className="nav-item ">
+        <a
+          href=""
+          onClick={onLogoutClick}
+          className="nav-link d-flex justify-content-center"
+        >
           <img
             className="rounded-circle"
             src={auth.user.avatar}
@@ -47,11 +50,8 @@ const Navbar = props => {
 
   const guestLinks = (
     <ul className="navbar-nav ml-auto">
-      <li className="nav-item">
+      <li className="nav-item ">
         <CustomLink title="Войти" navLink padding to="login" />
-      </li>
-      <li className="nav-item">
-        <CustomLink title="Зарегестрироваться" navLink to="register" />
       </li>
     </ul>
   );
@@ -59,14 +59,19 @@ const Navbar = props => {
   return (
     <nav className={navbarClassNames}>
       <div className="container">
-        <CustomLink title="FaceLine" navBrand to="/" />
+        <SwitchBtn />
+        <CustomLink
+          title="FaceLine"
+          navBrand
+          to={!auth.isAuthenticated ? "/" : "/dashboard"}
+        />
         <button
-          className="navbar-toggler"
+          class="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#mobile-nav"
         >
-          <span className="navbar-toggler-icon" />
+          <i className="fas fa-bars nav-icon-color" />
         </button>
 
         <div className="collapse navbar-collapse" id="mobile-nav">
@@ -77,8 +82,6 @@ const Navbar = props => {
           </ul>
 
           {auth.isAuthenticated ? authLinks : guestLinks}
-
-          <SwitchBtn />
         </div>
       </div>
     </nav>

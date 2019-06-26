@@ -1,31 +1,58 @@
 import React, { useContext, useEffect } from "react";
 import { ProfileContext } from "../../context/ProfileContext";
 import { AuthContext } from "../../context/AuthContext";
-import { getCurrentProfileAction } from "../../actions/profileActions";
-import { Spinner, CustomLink } from "../";
+import { ErrorContext } from "../../context/ErrorContext";
+import {
+  getCurrentProfileAction,
+  deleteAccountAction
+} from "../../actions/profileActions";
+import { Spinner, CustomLink, ProfileActions, CustomButton } from "../";
 
 const Dashboard = () => {
   let { profile, changeProfile } = useContext(ProfileContext);
   let { auth, changleAuth } = useContext(AuthContext);
+  let { errors, changeErrors } = useContext(ErrorContext);
 
   let dashbordContent;
 
+  const onDeleteClick = () => {
+    deleteAccountAction(changleAuth);
+  };
+
   useEffect(() => {
-    getCurrentProfileAction(changeProfile);
+    getCurrentProfileAction(changeProfile, changeErrors);
   }, []);
 
   if (profile.profile === null || profile.loading) {
     dashbordContent = <Spinner />;
-    console.log("Spinner");
   } else {
     //Check if logged user has profile data
     //Проверяем, есть ли профиль у пользователя
     if (Object.keys(profile.profile).length > 0) {
-      dashbordContent = <h4>TODO: display profile</h4>;
+      dashbordContent = (
+        <div>
+          <p className="lead text-muted">
+            Добро пожаловать
+            <CustomLink
+              title={auth.user.name}
+              to={`/profile/${profile.profile.handle}`}
+              marginLeft
+            />
+          </p>
+          <ProfileActions />
+          {/* TODO: exp and edu*/}
+          <CustomButton
+            value="Удалить мой аккаунт"
+            btnDanger
+            marginTop
+            type="button"
+            onClick={onDeleteClick}
+          />
+        </div>
+      );
     } else {
       //User logged in, buth has no profile
       //Пользователь вошел, но у него нет профиля
-      console.log("None");
       dashbordContent = (
         <div>
           <p className="lead text-muted">Добро пожаловать {auth.user.name}</p>
