@@ -5,7 +5,7 @@ import { ErrorContext } from "../../context/ErrorContext";
 import { AuthContext } from "../../context/AuthContext";
 import { registerUserAction } from "../../actions/authActions";
 
-const Register = withRouter(props => {
+const Register = props => {
   let { errors, changeErrors } = useContext(ErrorContext);
   let { auth } = useContext(AuthContext);
 
@@ -85,13 +85,13 @@ const Register = withRouter(props => {
                 onChange={handlePassword2}
                 errors={errors}
               />
-              <CustomButton type="submit" marginTop />
+              <CustomButton type="submit" marginTop btnBlock />
             </form>
           </div>
         </div>
       </div>
     </div>
   );
-});
+};
 
-export default Register;
+export default withRouter(Register);

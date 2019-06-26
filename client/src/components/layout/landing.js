@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { CustomLink } from "../";
 import { AuthContext } from "../../context/AuthContext";
 
-const Landing = withRouter(props => {
+const Landing = props => {
   let { auth } = useContext(AuthContext);
   useEffect(() => {
     if (auth.isAuthenticated) {
@@ -36,6 +36,6 @@ const Landing = withRouter(props => {
       </div>
     </div>
   );
-});
+};
 
-export default Landing;
+export default withRouter(Landing);

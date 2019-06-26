@@ -10,16 +10,22 @@ const Dashboard = () => {
 
   let dashbordContent;
 
+  useEffect(() => {
+    getCurrentProfileAction(changeProfile);
+  }, []);
+
   if (profile.profile === null || profile.loading) {
     dashbordContent = <Spinner />;
+    console.log("Spinner");
   } else {
     //Check if logged user has profile data
     //Проверяем, есть ли профиль у пользователя
-    if (Object.keys(profile.profile).lenght > 0) {
+    if (Object.keys(profile.profile).length > 0) {
       dashbordContent = <h4>TODO: display profile</h4>;
     } else {
       //User logged in, buth has no profile
       //Пользователь вошел, но у него нет профиля
+      console.log("None");
       dashbordContent = (
         <div>
           <p className="lead text-muted">Добро пожаловать {auth.user.name}</p>
@@ -32,10 +38,6 @@ const Dashboard = () => {
       );
     }
   }
-
-  useEffect(() => {
-    getCurrentProfileAction(changeProfile);
-  }, []);
   return (
     <div className="dashboard min-height pt-4 pb-4">
       <div className="container">

@@ -24,6 +24,20 @@ export const getCurrentProfileAction = changeProfile => {
     });
 };
 
+//Create profile
+//Создание профиля
+export const createProfileAction = (profileData, history, changeErrors) => {
+  axios
+    .post("/api/profile", profileData)
+    .then(() => history.push("/dashboard"))
+    .catch(err =>
+      changeErrors({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 //Profile Loading
 //Профиль загружается
 export const setProfileLoadingAction = () => {

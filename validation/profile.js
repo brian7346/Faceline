@@ -13,7 +13,7 @@ module.exports = function validateProfileInput(data) {
   }
 
   if (Validator.isEmpty(data.handle)) {
-    errors.handle = "Profile handle is required";
+    errors.handle = "Логин для профиля обязателен";
   }
 
   if (Validator.isEmpty(data.status)) {
@@ -21,7 +21,7 @@ module.exports = function validateProfileInput(data) {
   }
 
   if (Validator.isEmpty(data.skills)) {
-    errors.skills = "Полу Навыки не может быть пустым";
+    errors.skills = "Поле Навыки не может быть пустым";
   }
 
   if (!isEmpty(data.website)) {

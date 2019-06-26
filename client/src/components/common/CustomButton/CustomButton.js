@@ -10,26 +10,41 @@ const CustomButton = props => {
 
   let buttonClassNames = classNames({
     btn: true,
-    "btn-block": true,
+    "btn-block": props.btnBlock,
     "mt-4": props.marginTop,
     "dark-bg": theme.darkMode,
     "dark-bg-button": theme.darkMode,
-    "current-bg": !theme.darkMode,
-    "mr-2": props.marginRight
+    "btn-light": props.btnLight && !theme.darkMode,
+    "current-bg": !theme.darkMode && !props.btnLight,
+    "mr-2": props.marginRight,
+    "mb-3": props.marginBottom
   });
-  return <input type={props.type} className={buttonClassNames} />;
+  return (
+    <div>
+      <input
+        type={props.type}
+        className={buttonClassNames}
+        value={props.value}
+        onClick={props.onClick}
+      />
+      {props.tip && <small className="text-muted">{props.tip}</small>}
+    </div>
+  );
 };
 
 CustomButton.propTypes = {
   type: PropTypes.string,
+  tvalueype: PropTypes.string,
   marginTop: PropTypes.bool,
-  marginRight: PropTypes.bool
+  marginRight: PropTypes.bool,
+  marginBottom: PropTypes.bool,
+  onClick: PropTypes.func
 };
 
 CustomButton.defaultProps = {
+  value: "Отправить",
   type: "",
-  marginTop: false,
-  marginRight: false
+  onClick: () => null
 };
 
 export default CustomButton;

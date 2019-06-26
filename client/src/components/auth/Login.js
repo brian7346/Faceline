@@ -5,7 +5,7 @@ import { ErrorContext } from "../../context/ErrorContext";
 import { CustomButton, CustomInput } from "../";
 import { loginUserAction } from "../../actions/authActions";
 
-const Login = withRouter(props => {
+const Login = props => {
   let { auth, changleAuth } = useContext(AuthContext);
   let { errors, changeErrors } = useContext(ErrorContext);
 
@@ -56,13 +56,13 @@ const Login = withRouter(props => {
                 onChange={handlePassword}
                 errors={errors}
               />
-              <CustomButton type="submit" marginTop />
+              <CustomButton type="submit" marginTop btnBlock />
             </form>
           </div>
         </div>
       </div>
     </div>
   );
-});
+};
 
-export default Login;
+export default withRouter(Login);
