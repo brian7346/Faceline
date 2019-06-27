@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { withRouter } from "react-router-dom";
-import { CustomLink } from "../";
+import { CustomLink } from "..";
 import { AuthContext } from "../../context/AuthContext";
 
 const Landing = props => {

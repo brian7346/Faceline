@@ -30,6 +30,14 @@ const Navbar = props => {
   const authLinks = (
     <ul className="navbar-nav ml-auto ">
       <li className="nav-item ">
+        <CustomLink
+          title="Управление аккаунтом"
+          navLink
+          padding
+          to="dashboard"
+        />
+      </li>
+      <li className="nav-item ">
         <a
           href=""
           onClick={onLogoutClick}
@@ -66,7 +74,7 @@ const Navbar = props => {
           to={!auth.isAuthenticated ? "/" : "/dashboard"}
         />
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#mobile-nav"

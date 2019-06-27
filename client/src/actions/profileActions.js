@@ -30,7 +30,13 @@ export const getCurrentProfileAction = changeProfile => {
 export const createProfileAction = (profileData, history, changeErrors) => {
   axios
     .post("/api/profile", profileData)
-    .then(() => history.push("/dashboard"))
+    .then(() => {
+      history.push("/dashboard");
+      changeErrors({
+        type: GET_ERRORS,
+        payload: {}
+      });
+    })
     .catch(err =>
       changeErrors({
         type: GET_ERRORS,

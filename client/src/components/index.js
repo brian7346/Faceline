@@ -20,3 +20,4 @@ export {
 } from "./common/CustomTextArea/CustomTextArea";
 export { default as InputGroup } from "./common/InputGroup/InputGroup";
 export { default as ProfileActions } from "./Dashboard/ProfileActions";
+export { default as EditProfile } from "./EdidProfile/EditProfile";

@@ -15,7 +15,8 @@ import {
   AppWrapper,
   Dashboard,
   PrivateRoute,
-  CreateProfile
+  CreateProfile,
+  EditProfile
 } from "./components";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AuthContext } from "./context/AuthContext";
@@ -63,10 +64,19 @@ const App = () => {
               <Route exact path="/login" component={Login} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
                 <PrivateRoute
                   exact
                   path="/create-profile"
                   component={CreateProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/edit-profile"
+                  component={EditProfile}
                 />
               </Switch>
             </ErrorProvider>
