@@ -64,6 +64,25 @@ export const addExperienceAction = (expData, history, changeErrors) => {
       })
     );
 };
+//Add education
+//Добавить образование
+export const addEducationAction = (eduData, history, changeErrors) => {
+  axios
+    .post("/api/profile/education", eduData)
+    .then(() => {
+      changeErrors({
+        type: GET_ERRORS,
+        payload: {}
+      });
+      history.push("/dashboard");
+    })
+    .catch(err =>
+      changeErrors({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
 
 //Delete account & profile
 //Удаляем аккаунт и профиль

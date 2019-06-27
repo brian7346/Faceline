@@ -18,7 +18,7 @@ module.exports = function validateEducationInput(data) {
   }
 
   if (validator.isEmpty(data.fieldofstudy)) {
-    errors.fieldofstudy = "Поле с fieldofstudy не может быть пустым";
+    errors.fieldofstudy = "Поле со специализацией не может быть пустым";
   }
 
   if (validator.isEmpty(data.from)) {

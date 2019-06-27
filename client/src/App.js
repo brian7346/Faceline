@@ -17,7 +17,8 @@ import {
   PrivateRoute,
   CreateProfile,
   EditProfile,
-  AddExperience
+  AddExperience,
+  AddEducation
 } from "./components";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AuthContext } from "./context/AuthContext";
@@ -85,6 +86,13 @@ const App = () => {
                   exact
                   path="/add-experience"
                   component={AddExperience}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-education"
+                  component={AddEducation}
                 />
               </Switch>
             </ErrorProvider>
