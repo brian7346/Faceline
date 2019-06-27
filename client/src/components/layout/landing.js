@@ -4,7 +4,7 @@ import { CustomLink } from "..";
 import { AuthContext } from "../../context/AuthContext";
 
 const Landing = props => {
-  let { auth } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
   useEffect(() => {
     if (auth.isAuthenticated) {
       props.history.push("/dashboard");

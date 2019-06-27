@@ -9,9 +9,9 @@ import { logoutUserAction } from "../../actions/authActions";
 import { clearCurrentProfileAction } from "../../actions/profileActions";
 
 const Navbar = props => {
-  let { theme } = useContext(ThemeContext);
-  let { auth, changleAuth } = useContext(AuthContext);
-  let { changeProfile } = useContext(ProfileContext);
+  const { theme } = useContext(ThemeContext);
+  const { auth, changleAuth } = useContext(AuthContext);
+  const { changeProfile } = useContext(ProfileContext);
 
   let navbarClassNames = classNames({
     navbar: true,

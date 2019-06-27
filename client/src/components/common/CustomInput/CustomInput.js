@@ -33,7 +33,7 @@ const CustomInput = props => {
 
 CustomInput.propTypes = {
   type: PropTypes.string,
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
@@ -44,6 +44,7 @@ CustomInput.propTypes = {
 
 CustomInput.defaultProps = {
   type: "text",
+  placeholder: "",
   errors: {}
 };
 

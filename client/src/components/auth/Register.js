@@ -6,8 +6,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { registerUserAction } from "../../actions/authActions";
 
 const Register = props => {
-  let { errors, changeErrors } = useContext(ErrorContext);
-  let { auth } = useContext(AuthContext);
+  const { errors, changeErrors } = useContext(ErrorContext);
+  const { auth } = useContext(AuthContext);
 
   const [name, changeName] = useState("");
   const [email, changeEmail] = useState("");

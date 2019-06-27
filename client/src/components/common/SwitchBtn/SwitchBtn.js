@@ -4,7 +4,7 @@ import { ThemeContext } from "../../../context/ThemeContext";
 import { changeThemeAction } from "../../../actions/themeActions";
 
 const SwitchBtn = props => {
-  let { theme, changeTheme } = React.useContext(ThemeContext);
+  const { theme, changeTheme } = React.useContext(ThemeContext);
 
   const switchState = theme.darkMode ? "switch on" : "switch off";
   const update = () => changeTheme(changeThemeAction());

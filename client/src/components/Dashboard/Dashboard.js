@@ -9,9 +9,9 @@ import {
 import { Spinner, CustomLink, ProfileActions, CustomButton } from "../";
 
 const Dashboard = () => {
-  let { profile, changeProfile } = useContext(ProfileContext);
-  let { auth, changleAuth } = useContext(AuthContext);
-  let { errors, changeErrors } = useContext(ErrorContext);
+  const { profile, changeProfile } = useContext(ProfileContext);
+  const { auth, changleAuth } = useContext(AuthContext);
+  const { errors, changeErrors } = useContext(ErrorContext);
 
   let dashbordContent;
 

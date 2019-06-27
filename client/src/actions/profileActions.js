@@ -45,6 +45,26 @@ export const createProfileAction = (profileData, history, changeErrors) => {
     );
 };
 
+//Add experience
+//Добавить опыт
+export const addExperienceAction = (expData, history, changeErrors) => {
+  axios
+    .post("/api/profile/experience", expData)
+    .then(() => {
+      changeErrors({
+        type: GET_ERRORS,
+        payload: {}
+      });
+      history.push("/dashboard");
+    })
+    .catch(err =>
+      changeErrors({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 //Delete account & profile
 //Удаляем аккаунт и профиль
 export const deleteAccountAction = (changleAuth, changeErrors) => {

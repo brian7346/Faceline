@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { ErrorContext } from "../../context/ErrorContext";
-import { ProfileContext } from "../../context/ProfileContext";
 import {
   CustomInput,
   SelectListGroup,
@@ -10,10 +9,19 @@ import {
   CustomButton
 } from "../";
 import { createProfileAction } from "../../actions/profileActions";
+import { GET_ERRORS } from "../../actions/types";
 
 const CreateProfile = props => {
-  let { errors, changeErrors } = useContext(ErrorContext);
-  let { profile, changeProfile } = useContext(ProfileContext);
+  const { errors, changeErrors } = useContext(ErrorContext);
+
+  useEffect(() => {
+    return () => {
+      changeErrors({
+        type: GET_ERRORS,
+        payload: {}
+      });
+    };
+  }, []);
 
   const [displaySocialInput, changeDisplaySocialInput] = useState(false);
   const [profileHandle, changeProfileHandle] = useState("");
@@ -136,7 +144,7 @@ const CreateProfile = props => {
             <small className="d-block pb-3">* = обязательные поля</small>
             <form onSubmit={onSubmit}>
               <CustomInput
-                placeholder="Логин профиля"
+                placeholder="* Логин профиля"
                 name="handle"
                 value={profileHandle}
                 onChange={handleProfileHandle}
@@ -144,7 +152,7 @@ const CreateProfile = props => {
                 info="Уникальный логин для вашей ссылки на профиль(URL). Ваше полное имя, название компании, никнейм, и т.д."
               />
               <SelectListGroup
-                placeholder="Статус"
+                placeholder="* Статус"
                 name="status"
                 value={status}
                 options={options}
@@ -177,7 +185,7 @@ const CreateProfile = props => {
                 info="Город или область (например: Лос-Анжелес)"
               />
               <CustomInput
-                placeholder="Навыки/Хобби"
+                placeholder="* Навыки/Хобби"
                 name="skills"
                 value={skills}
                 onChange={handleSkills}

@@ -6,7 +6,7 @@ import { ThemeContext } from "../../../context/ThemeContext";
 import "./CustomButton.scss";
 
 const CustomButton = props => {
-  let { theme } = React.useContext(ThemeContext);
+  const { theme } = React.useContext(ThemeContext);
 
   let buttonClassNames = classNames({
     btn: true,

@@ -6,8 +6,8 @@ import { CustomButton, CustomInput } from "../";
 import { loginUserAction } from "../../actions/authActions";
 
 const Login = props => {
-  let { auth, changleAuth } = useContext(AuthContext);
-  let { errors, changeErrors } = useContext(ErrorContext);
+  const { auth, changleAuth } = useContext(AuthContext);
+  const { errors, changeErrors } = useContext(ErrorContext);
 
   const [email, changeEmail] = useState("");
   const [password, changePassword] = useState("");

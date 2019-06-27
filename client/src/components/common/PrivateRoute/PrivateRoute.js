@@ -4,7 +4,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import PropTypes from "prop-types";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  let { auth } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
   return (
     <Route
       {...rest}

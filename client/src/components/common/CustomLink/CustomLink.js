@@ -6,7 +6,7 @@ import { ThemeContext } from "../../../context/ThemeContext";
 import PropTypes from "prop-types";
 
 const CustomLink = props => {
-  let { theme } = React.useContext(ThemeContext);
+  const { theme } = React.useContext(ThemeContext);
 
   let className = classNames({
     btn: true,

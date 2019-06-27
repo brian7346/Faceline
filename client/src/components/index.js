@@ -21,3 +21,5 @@ export {
 export { default as InputGroup } from "./common/InputGroup/InputGroup";
 export { default as ProfileActions } from "./Dashboard/ProfileActions";
 export { default as EditProfile } from "./EdidProfile/EditProfile";
+export { default as AddExperience } from "./AddCredentials/AddExperience";
+export { default as AddEducation } from "./AddCredentials/AddEducation";

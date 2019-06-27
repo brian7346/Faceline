@@ -7,17 +7,19 @@ import {
   SelectListGroup,
   CustomTextArea,
   InputGroup,
-  CustomButton
+  CustomButton,
+  CustomLink
 } from "../";
 import {
   createProfileAction,
   getCurrentProfileAction
 } from "../../actions/profileActions";
 import { isEmpty } from "../../validation/is-empty";
+import { GET_ERRORS } from "../../actions/types";
 
 const EditProfile = props => {
-  let { errors, changeErrors } = useContext(ErrorContext);
-  let { profile, changeProfile } = useContext(ProfileContext);
+  const { errors, changeErrors } = useContext(ErrorContext);
+  const { profile, changeProfile } = useContext(ProfileContext);
 
   const [displaySocialInput, changeDisplaySocialInput] = useState(false);
   const [profileHandle, changeProfileHandle] = useState("");
@@ -54,7 +56,6 @@ const EditProfile = props => {
       handle: profileHandle,
       company,
       website,
-      website,
       location,
       status,
       skills,
@@ -69,6 +70,12 @@ const EditProfile = props => {
 
   useEffect(() => {
     getCurrentProfileAction(changeProfile);
+    return () => {
+      changeErrors({
+        type: GET_ERRORS,
+        payload: {}
+      });
+    };
   }, []);
 
   useEffect(() => {
@@ -179,10 +186,12 @@ const EditProfile = props => {
     );
   }
   return (
-    <div className="create-profile min-height min-height pt-4 pb-4">
+    <div className="create-profile min-height pt-4 pb-4">
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
+            <CustomLink to="dashboard" btnLight title="Назад" />
+
             <h1 className="display-4 text-center">Редактирование профиля</h1>
             <small className="d-block pb-3">* = обязательные поля</small>
             <form onSubmit={onSubmit}>

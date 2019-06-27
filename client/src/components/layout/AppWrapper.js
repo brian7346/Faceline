@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const AppWrapper = props => {
-  let { theme } = React.useContext(ThemeContext);
+  const { theme } = React.useContext(ThemeContext);
 
   let appWrapperClassNames = classNames({
     App: true,
