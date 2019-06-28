@@ -4,26 +4,26 @@ import { ProfileContext } from "../../context/ProfileContext";
 import { ErrorContext } from "../../context/ErrorContext";
 
 import { CustomButton } from "../";
-import { deleteExperienceAction } from "../../actions/profileActions";
+import { deleteEducationAction } from "../../actions/profileActions";
 import Moment from "react-moment";
 
-const Experience = props => {
+const Education = props => {
   const { changeProfile } = React.useContext(ProfileContext);
   const { changeErrors } = React.useContext(ErrorContext);
 
   const onDelete = id => {
-    deleteExperienceAction(id, changeProfile, changeErrors);
+    deleteEducationAction(id, changeProfile, changeErrors);
   };
-  const experience = props.experience.map(exp => (
-    <tr key={exp._id}>
-      <td>{exp.company}</td>
-      <td>{exp.title}</td>
+  const education = props.education.map(edu => (
+    <tr key={edu._id}>
+      <td>{edu.school}</td>
+      <td>{edu.degree}</td>
       <td>
-        <Moment format="DD.MM.YYYY">{exp.from}</Moment> -
-        {exp.to === null ? (
+        <Moment format="DD.MM.YYYY">{edu.from}</Moment> -
+        {edu.to === null ? (
           " Сейчас"
         ) : (
-          <Moment format="DD.MM.YYYY">{exp.to}</Moment>
+          <Moment format="DD.MM.YYYY">{edu.to}</Moment>
         )}
       </td>
       <td>
@@ -31,31 +31,31 @@ const Experience = props => {
           type="button"
           btnDanger
           value="Удалить"
-          onClick={() => onDelete(exp._id)}
+          onClick={() => onDelete(edu._id)}
         />
       </td>
     </tr>
   ));
   return (
     <>
-      <h4 className="mt-4 mb-4">Опыт работы</h4>
+      <h4 className="mb-5">Образование</h4>
       <table className="table">
         <thead>
           <tr>
-            <th>Компания</th>
-            <th>Должность</th>
+            <th>Школа</th>
+            <th>Образование</th>
             <th>Период</th>
             <th />
           </tr>
         </thead>
-        <tbody>{experience}</tbody>
+        <tbody>{education}</tbody>
       </table>
     </>
   );
 };
 
-Experience.propTypes = {
-  experience: PropTypes.array
+Education.propTypes = {
+  education: PropTypes.array
 };
 
-export default Experience;
+export default Education;

@@ -11,7 +11,8 @@ import {
   CustomLink,
   ProfileActions,
   CustomButton,
-  Experience
+  Experience,
+  Education
 } from "../";
 
 const Dashboard = () => {
@@ -37,7 +38,7 @@ const Dashboard = () => {
     if (Object.keys(profile.profile).length > 0) {
       dashbordContent = (
         <>
-          <p className="lead text-muted">
+          <p className="mb-3 lead text-muted">
             Добро пожаловать
             <CustomLink
               title={auth.user.name}
@@ -47,6 +48,7 @@ const Dashboard = () => {
           </p>
           <ProfileActions />
           <Experience experience={profile.profile.experience} />
+          <Education education={profile.profile.education} />
           <CustomButton
             value="Удалить мой аккаунт"
             btnDanger

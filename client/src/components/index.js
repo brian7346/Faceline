@@ -12,15 +12,16 @@ export { default as Dashboard } from "./Dashboard/Dashboard";
 export { default as Spinner } from "./common/Spinner/Spinner";
 export { default as PrivateRoute } from "./common/PrivateRoute/PrivateRoute";
 export { default as CreateProfile } from "./CreateProfile/CreateProfile";
-export {
-  default as SelectListGroup
-} from "./common/SelectListGroup/SelectListGroup";
-export {
-  default as CustomTextArea
-} from "./common/CustomTextArea/CustomTextArea";
 export { default as InputGroup } from "./common/InputGroup/InputGroup";
 export { default as ProfileActions } from "./Dashboard/ProfileActions";
 export { default as EditProfile } from "./EditProfile/EditProfile";
 export { default as AddExperience } from "./AddCredentials/AddExperience";
 export { default as AddEducation } from "./AddCredentials/AddEducation";
 export { default as Experience } from "./Dashboard/Experience";
+export { default as Education } from "./Dashboard/Education";
+export {
+  default as SelectListGroup
+} from "./common/SelectListGroup/SelectListGroup";
+export {
+  default as CustomTextArea
+} from "./common/CustomTextArea/CustomTextArea";

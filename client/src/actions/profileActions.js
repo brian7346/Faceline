@@ -86,10 +86,29 @@ export const addEducationAction = (eduData, history, changeErrors) => {
 };
 
 //Delete experience
-//Удалить образование
+//Удалить опыт
 export const deleteExperienceAction = (id, changeProfile, changeErrors) => {
   axios
     .delete(`/api/profile/experience/${id}`)
+    .then(res => {
+      changeProfile({
+        type: GET_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(err =>
+      changeErrors({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+//Delete education
+//Удалить образование
+export const deleteEducationAction = (id, changeProfile, changeErrors) => {
+  axios
+    .delete(`/api/profile/education/${id}`)
     .then(res => {
       changeProfile({
         type: GET_PROFILE,
