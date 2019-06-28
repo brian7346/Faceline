@@ -104,7 +104,7 @@ const CreateProfile = props => {
 
   if (displaySocialInput) {
     socialInputs = (
-      <div>
+      <>
         <InputGroup
           placeholder="Ссылка на профиль в Twitter"
           name="twitter"
@@ -129,7 +129,7 @@ const CreateProfile = props => {
           onChange={handleInstagram}
           errors={errors}
         />
-      </div>
+      </>
     );
   }
   return (

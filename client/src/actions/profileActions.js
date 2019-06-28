@@ -64,6 +64,7 @@ export const addExperienceAction = (expData, history, changeErrors) => {
       })
     );
 };
+
 //Add education
 //Добавить образование
 export const addEducationAction = (eduData, history, changeErrors) => {
@@ -75,6 +76,25 @@ export const addEducationAction = (eduData, history, changeErrors) => {
         payload: {}
       });
       history.push("/dashboard");
+    })
+    .catch(err =>
+      changeErrors({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+//Delete experience
+//Удалить образование
+export const deleteExperienceAction = (id, changeProfile, changeErrors) => {
+  axios
+    .delete(`/api/profile/experience/${id}`)
+    .then(res => {
+      changeProfile({
+        type: GET_PROFILE,
+        payload: res.data
+      });
     })
     .catch(err =>
       changeErrors({

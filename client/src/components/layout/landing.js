@@ -9,7 +9,7 @@ const Landing = props => {
     if (auth.isAuthenticated) {
       props.history.push("/dashboard");
     }
-  }, [auth.isAuthenticated, props.history]);
+  }, [auth.isAuthenticated]);
   return (
     <div className="landing">
       <div className="dark-overlay landing-inner text-light">

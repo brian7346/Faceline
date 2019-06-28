@@ -9,7 +9,7 @@ import {
   InputGroup,
   CustomButton,
   CustomLink
-} from "../";
+} from "..";
 import {
   createProfileAction,
   getCurrentProfileAction

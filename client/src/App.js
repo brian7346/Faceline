@@ -20,14 +20,16 @@ import {
   AddExperience,
   AddEducation
 } from "./components";
-import { ThemeProvider } from "./context/ThemeContext";
 import { AuthContext } from "./context/AuthContext";
 import { ErrorProvider } from "./context/ErrorContext";
 import { ProfileContext } from "./context/ProfileContext";
+import { ThemeContext } from "./context/ThemeContext";
+import { changeThemeAction } from "./actions/themeActions";
 
 const App = () => {
   const { auth, changleAuth } = useContext(AuthContext);
   const { changeProfile } = useContext(ProfileContext);
+  const { changeTheme } = useContext(ThemeContext);
 
   //Check for token
   //Проверяем наличие токена
@@ -52,55 +54,57 @@ const App = () => {
         window.location.href = "/login";
       }
     }
+
+    if (JSON.parse(localStorage.darkMode)) {
+      changeTheme(changeThemeAction());
+    }
   }, []);
 
   return (
-    <ThemeProvider>
-      <Router>
-        <AppWrapper>
-          <Navbar />
-          <Route exact path="/" component={Landing} />
-          <div className="container">
-            <ErrorProvider>
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Switch>
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/create-profile"
-                  component={CreateProfile}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/edit-profile"
-                  component={EditProfile}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/add-experience"
-                  component={AddExperience}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/add-education"
-                  component={AddEducation}
-                />
-              </Switch>
-            </ErrorProvider>
-          </div>
-          <Footer />
-        </AppWrapper>
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <AppWrapper>
+        <Navbar />
+        <Route exact path="/" component={Landing} />
+        <div className="container">
+          <ErrorProvider>
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/add-experience"
+                component={AddExperience}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/add-education"
+                component={AddEducation}
+              />
+            </Switch>
+          </ErrorProvider>
+        </div>
+        <Footer />
+      </AppWrapper>
+    </Router>
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { ThemeContext } from "../../context/ThemeContext";
 
-const Footer = props => {
+const Footer = () => {
   const { theme } = React.useContext(ThemeContext);
 
   let footerClassNames = classNames({

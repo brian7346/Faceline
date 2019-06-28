@@ -78,6 +78,10 @@ a {
 .dark-theme {
   background: $secondaryDark;
   color: white;
+
+  .table {
+    color: white !important;
+  }
 }
 
 .current-btn {
