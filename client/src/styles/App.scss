@@ -16,6 +16,7 @@ a {
   flex-direction: column;
   min-height: 100vh;
   background: white;
+  overflow: hidden;
 }
 
 .min-height {
@@ -82,6 +83,10 @@ a {
   .table {
     color: white !important;
   }
+}
+
+.white-border {
+  border: 1px solid rgba(248, 249, 250, 0.17);
 }
 
 .current-btn {

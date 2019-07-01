@@ -1,14 +1,23 @@
 import axios from "axios";
 import {
   GET_PROFILE,
+  GET_PROFILES,
   PROFILE_LOADING,
   GET_ERRORS,
   CLEAR_CURRENT_PROFILE,
   SET_CURRENT_USER
 } from "./types";
 
+//Profile Loading
+//Профиль загружается
+export const setProfileLoadingAction = () => {
+  return {
+    type: PROFILE_LOADING
+  };
+};
+
 export const getCurrentProfileAction = changeProfile => {
-  changeProfile(setProfileLoadingAction);
+  changeProfile(setProfileLoadingAction());
   axios
     .get("/api/profile")
     .then(res => {
@@ -123,6 +132,26 @@ export const deleteEducationAction = (id, changeProfile, changeErrors) => {
     );
 };
 
+//Get all profiles
+//Полученте всех профилей
+export const getProfilesAction = changeProfile => {
+  changeProfile(setProfileLoadingAction());
+  axios
+    .get("/api/profile/all")
+    .then(res => {
+      changeProfile({
+        type: GET_PROFILES,
+        payload: res.data
+      });
+    })
+    .catch(err =>
+      changeProfile({
+        type: GET_ERRORS,
+        payload: null
+      })
+    );
+};
+
 //Delete account & profile
 //Удаляем аккаунт и профиль
 export const deleteAccountAction = (changleAuth, changeErrors) => {
@@ -142,14 +171,6 @@ export const deleteAccountAction = (changleAuth, changeErrors) => {
         })
       );
   }
-};
-
-//Profile Loading
-//Профиль загружается
-export const setProfileLoadingAction = () => {
-  return {
-    type: PROFILE_LOADING
-  };
 };
 
 //Clear Profile

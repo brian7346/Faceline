@@ -19,6 +19,7 @@ export { default as AddExperience } from "./AddCredentials/AddExperience";
 export { default as AddEducation } from "./AddCredentials/AddEducation";
 export { default as Experience } from "./Dashboard/Experience";
 export { default as Education } from "./Dashboard/Education";
+export { default as Profiles } from "./Profiles/Profiles";
 export {
   default as SelectListGroup
 } from "./common/SelectListGroup/SelectListGroup";

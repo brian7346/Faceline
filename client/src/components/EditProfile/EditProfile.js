@@ -274,7 +274,7 @@ const EditProfile = props => {
               <CustomButton
                 type="submit"
                 marginBottom
-                value="Добавить"
+                value="Обновить"
                 btnBlock
               />
             </form>

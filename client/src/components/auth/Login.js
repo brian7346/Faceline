@@ -56,7 +56,7 @@ const Login = props => {
                 onChange={handlePassword}
                 errors={errors}
               />
-              <CustomButton type="submit" marginTop btnBlock />
+              <CustomButton type="submit" value="Войти" marginTop btnBlock />
             </form>
           </div>
         </div>
