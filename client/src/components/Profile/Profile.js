@@ -36,7 +36,7 @@ const Profile = props => {
           <div className="col-md-6" />
         </div>
         <ProfileHeader profile={profile} darkMode={theme.darkMode} />
-        <ProfileAbout />
+        <ProfileAbout profile={profile} darkMode={theme.darkMode} />
         <ProfileCreds />
         <ProfileGitHub />
       </>
