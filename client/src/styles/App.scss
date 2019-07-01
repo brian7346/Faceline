@@ -108,6 +108,10 @@ a {
   transition: background 0.15s;
 }
 
+.navbar-collapse .navbar-nav {
+  align-items: center;
+}
+
 .footer-absolute {
   position: absolute;
   bottom: 0;

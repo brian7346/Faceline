@@ -19,7 +19,8 @@ import {
   EditProfile,
   AddExperience,
   AddEducation,
-  Profiles
+  Profiles,
+  Profile
 } from "./components";
 import { AuthContext } from "./context/AuthContext";
 import { ErrorProvider } from "./context/ErrorContext";
@@ -71,6 +72,7 @@ const App = () => {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/profiles" component={Profiles} />
+            <Route exact path="/profile/:handle" component={Profile} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>

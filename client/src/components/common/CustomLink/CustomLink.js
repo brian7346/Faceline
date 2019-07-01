@@ -11,14 +11,13 @@ const CustomLink = props => {
   let className = classNames({
     btn: true,
     "btn-lg": props.large && !props.navLink && !props.navBrand,
-    "dark-link ":
-      theme.darkMode && !props.btnLight && !props.navLink && !props.navBrand,
-    "dark-bg":
-      theme.darkMode && !props.btnLight && !props.navLink && !props.navBrand,
+    "dark-link ": theme.darkMode && !props.navLink && !props.navBrand,
+    "dark-bg": theme.darkMode && !props.navLink && !props.navBrand,
     "current-bg":
       !theme.darkMode && !props.btnLight && !props.navLink && !props.navBrand,
     "mr-2": props.marginRight,
     "ml-2": props.marginLeft,
+    "mb-3": props.marginBottom,
     p4: props.padding,
     "btn-light": props.btnLight,
     "nav-link": props.navLink,

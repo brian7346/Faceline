@@ -16,10 +16,32 @@ export const setProfileLoadingAction = () => {
   };
 };
 
+//Get current prifile
+//Получить текущий профиль
 export const getCurrentProfileAction = changeProfile => {
   changeProfile(setProfileLoadingAction());
   axios
     .get("/api/profile")
+    .then(res => {
+      changeProfile({
+        type: GET_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(() => {
+      changeProfile({
+        type: GET_PROFILE,
+        payload: {}
+      });
+    });
+};
+
+//Get prifile by handle
+//Получение профиля по логину
+export const getProfileByHandleAction = (handle, changeProfile) => {
+  changeProfile(setProfileLoadingAction());
+  axios
+    .get(`/api/profile/handle/${handle}`)
     .then(res => {
       changeProfile({
         type: GET_PROFILE,

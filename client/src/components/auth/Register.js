@@ -85,7 +85,12 @@ const Register = props => {
                 onChange={handlePassword2}
                 errors={errors}
               />
-              <CustomButton type="submit" marginTop btnBlock />
+              <CustomButton
+                type="submit"
+                value="Зарегестрироваться"
+                marginTop
+                btnBlock
+              />
             </form>
           </div>
         </div>
