@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { ProfileContext } from "../../context/ProfileContext";
+import { withRouter } from "react-router-dom";
 import { Spinner, CustomLink } from "../";
 import ProfileHeader from "./ProfileHeader";
 import ProfileAbout from "./ProfileAbout";
@@ -11,12 +12,19 @@ import { ThemeContext } from "../../context/ThemeContext";
 const Profile = props => {
   const { profile, changeProfile } = useContext(ProfileContext);
   const { theme } = useContext(ThemeContext);
+  const { myProfile } = profile;
 
   useEffect(() => {
     if (props.match.params.handle) {
       getProfileByHandleAction(props.match.params.handle, changeProfile);
     }
   }, []);
+
+  useEffect(() => {
+    if (myProfile === null && profile.loading) {
+      props.history.push("/not-found");
+    }
+  });
 
   let profileContent;
   if (profile.profile === null || profile.loading) {
@@ -37,8 +45,17 @@ const Profile = props => {
         </div>
         <ProfileHeader profile={profile} darkMode={theme.darkMode} />
         <ProfileAbout profile={profile} darkMode={theme.darkMode} />
-        <ProfileCreds />
-        <ProfileGitHub />
+        <ProfileCreds
+          education={profile.profile.education}
+          experience={profile.profile.experience}
+          darkMode={theme.darkMode}
+        />
+        {profile.profile.githubusername ? (
+          <ProfileGitHub
+            username={profile.profile.githubusername}
+            darkMode={theme.darkMode}
+          />
+        ) : null}
       </>
     );
   }
@@ -52,4 +69,4 @@ const Profile = props => {
   );
 };
 
-export default Profile;
+export default withRouter(Profile);

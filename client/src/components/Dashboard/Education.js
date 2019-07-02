@@ -21,7 +21,7 @@ const Education = props => {
       <td>
         <Moment format="DD.MM.YYYY">{edu.from}</Moment> -
         {edu.to === null ? (
-          " Сейчас"
+          " Текущее место"
         ) : (
           <Moment format="DD.MM.YYYY">{edu.to}</Moment>
         )}

@@ -8,7 +8,7 @@ import { ProfileContext } from "../../context/ProfileContext";
 import { logoutUserAction } from "../../actions/authActions";
 import { clearCurrentProfileAction } from "../../actions/profileActions";
 
-const Navbar = props => {
+const Navbar = () => {
   const { theme } = useContext(ThemeContext);
   const { auth, changleAuth } = useContext(AuthContext);
   const { changeProfile } = useContext(ProfileContext);
@@ -47,7 +47,7 @@ const Navbar = props => {
             className="rounded-circle"
             src={auth.user.avatar}
             alt={auth.user.avatar}
-            style={{ width: 25, marginRight: 5 }}
+            style={{ width: 25, marginRight: 5, height: 25 }}
             title="Вы должны присоединить ваш аккаунт на Gravatar, чтобы увидеть аватар "
           />
           Выйти

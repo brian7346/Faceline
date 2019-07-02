@@ -21,7 +21,7 @@ const Experience = props => {
       <td>
         <Moment format="DD.MM.YYYY">{exp.from}</Moment> -
         {exp.to === null ? (
-          " Сейчас"
+          " Текущее место"
         ) : (
           <Moment format="DD.MM.YYYY">{exp.to}</Moment>
         )}

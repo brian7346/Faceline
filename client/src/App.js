@@ -20,7 +20,8 @@ import {
   AddExperience,
   AddEducation,
   Profiles,
-  Profile
+  Profile,
+  NotFound
 } from "./components";
 import { AuthContext } from "./context/AuthContext";
 import { ErrorProvider } from "./context/ErrorContext";
@@ -57,7 +58,7 @@ const App = () => {
       }
     }
 
-    if (JSON.parse(localStorage.darkMode)) {
+    if (JSON.parse(localStorage.getItem("darkMode"))) {
       changeTheme(changeThemeAction());
     }
   }, []);
@@ -104,6 +105,7 @@ const App = () => {
                 component={AddEducation}
               />
             </Switch>
+            <Route exact path="/not-found" component={NotFound} />
           </ErrorProvider>
         </div>
         <Footer />
