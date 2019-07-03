@@ -12,7 +12,6 @@ import { ThemeContext } from "../../context/ThemeContext";
 const Profile = props => {
   const { profile, changeProfile } = useContext(ProfileContext);
   const { theme } = useContext(ThemeContext);
-  const { myProfile } = profile;
 
   useEffect(() => {
     if (props.match.params.handle) {
@@ -21,7 +20,7 @@ const Profile = props => {
   }, []);
 
   useEffect(() => {
-    if (myProfile === null && profile.loading) {
+    if (profile.profile === null && profile.loading) {
       props.history.push("/not-found");
     }
   });

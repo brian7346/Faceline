@@ -31,7 +31,7 @@ export const getCurrentProfileAction = changeProfile => {
     .catch(() => {
       changeProfile({
         type: GET_PROFILE,
-        payload: {}
+        payload: null
       });
     });
 };
@@ -51,7 +51,7 @@ export const getProfileByHandleAction = (handle, changeProfile) => {
     .catch(() => {
       changeProfile({
         type: GET_PROFILE,
-        payload: {}
+        payload: null
       });
     });
 };

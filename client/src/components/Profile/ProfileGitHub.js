@@ -11,7 +11,7 @@ const ProfileGitHub = props => {
   const [sort, changeSort] = useState("created: asc");
   const [repos, changeRepos] = useState([]);
 
-  let githubRef = React.createRef();
+  let githubRef;
 
   useEffect(() => {
     const { username } = props;
@@ -57,7 +57,7 @@ const ProfileGitHub = props => {
     </div>
   ));
   return (
-    <div ref={githubRef}>
+    <div ref={ref => (githubRef = ref)}>
       <hr />
       <h3 className="mb-4">Последние репозитории на GitHub</h3>
       {reposItems}
