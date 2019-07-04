@@ -190,7 +190,7 @@ const EditProfile = props => {
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
-            <CustomLink to="dashboard" btnLight title="Назад" />
+            <CustomLink to="/dashboard" btnLight title="Назад" />
 
             <h1 className="display-4 text-center">Редактирование профиля</h1>
             <small className="d-block pb-3">* = обязательные поля</small>

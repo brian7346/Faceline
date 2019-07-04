@@ -22,7 +22,8 @@ export { default as Education } from "./Dashboard/Education";
 export { default as Profiles } from "./Profiles/Profiles";
 export { default as Profile } from "./Profile/Profile";
 export { default as NotFound } from "./NotFound/NotFound";
-export { default as Post } from "./Posts/Post";
+export { default as Posts } from "./Posts/Posts";
+export { default as Post } from "./Post/Post";
 export {
   default as SelectListGroup
 } from "./common/SelectListGroup/SelectListGroup";

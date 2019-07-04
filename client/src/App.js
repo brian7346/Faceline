@@ -22,6 +22,7 @@ import {
   Profiles,
   Profile,
   NotFound,
+  Posts,
   Post
 } from "./components";
 import { AuthContext } from "./context/AuthContext";
@@ -104,7 +105,10 @@ const App = () => {
           </Switch>
           <PostProvider>
             <Switch>
-              <PrivateRoute exact path="/feed" component={Post} />
+              <PrivateRoute exact path="/feed" component={Posts} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/post/:id" component={Post} />
             </Switch>
           </PostProvider>
           <Route exact path="/not-found" component={NotFound} />

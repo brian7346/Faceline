@@ -14,14 +14,14 @@ const ProfileActions = () => {
   });
   return (
     <div className="btn-group mb-4" role="group">
-      <Link to="edit-profile" className={linkClassNames}>
+      <Link to="/edit-profile" className={linkClassNames}>
         <i className="fas fa-user-circle mr-1" /> Редактировать Профиль
       </Link>
-      <Link to="add-experience" className={linkClassNames}>
+      <Link to="/add-experience" className={linkClassNames}>
         <i className="fab fa-black-tie mr-1" />
         Добавить Опыт
       </Link>
-      <Link to="add-education" className={linkClassNames}>
+      <Link to="/add-education" className={linkClassNames}>
         <i className="fas fa-graduation-cap mr-1" />
         Добавить Образование
       </Link>

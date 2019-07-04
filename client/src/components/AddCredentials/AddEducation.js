@@ -59,7 +59,7 @@ const AddEducation = props => {
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
-            <CustomLink to="dashboard" btnLight title="Назад" />
+            <CustomLink to="/dashboard" btnLight title="Назад" />
             <h1 className="display-4 text-center">Добавить Образование</h1>
             <p className="p-lead text-center">
               Добавьте вашу школу, университет и т.п. которые вы окончили

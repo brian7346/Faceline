@@ -59,7 +59,7 @@ const AddExperience = props => {
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
-            <CustomLink to="dashboard" btnLight title="Назад" />
+            <CustomLink to="/dashboard" btnLight title="Назад" />
             <h1 className="display-4 text-center">Добавить Опыт</h1>
             <p className="p-lead text-center">
               Добавьте любую работу или должность, которая у вас была в прошлом

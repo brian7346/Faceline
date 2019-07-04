@@ -27,9 +27,15 @@ const Landing = props => {
                 title="Зарегистрироваться"
                 marginRight
                 large
-                to="register"
+                to="/register"
               />
-              <CustomLink title="Войти" marginRight large btnLight to="login" />
+              <CustomLink
+                title="Войти"
+                marginRight
+                large
+                btnLight
+                to="/login"
+              />
             </div>
           </div>
         </div>

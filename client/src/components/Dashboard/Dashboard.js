@@ -68,7 +68,7 @@ const Dashboard = () => {
             Вы еще не заполнили свой профиль, пожалуйста, добавьте немного
             информации о себе
           </p>
-          <CustomLink title="Создать профиль" large to="create-profile" />
+          <CustomLink title="Создать профиль" large to="/create-profile" />
         </>
       );
     }

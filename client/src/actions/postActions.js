@@ -4,7 +4,8 @@ import {
   GET_ERRORS,
   GET_POSTS,
   POST_LOADING,
-  DELETE_POST
+  DELETE_POST,
+  GET_POST
 } from "./types";
 
 // Add Post
@@ -12,12 +13,16 @@ import {
 export const addPostAction = (postData, changePost, changeErrors) => {
   axios
     .post("/api/posts/", postData)
-    .then(res =>
+    .then(res => {
       changePost({
         type: ADD_POST,
         payload: res.data
-      })
-    )
+      });
+      changeErrors({
+        type: GET_ERRORS,
+        payload: {}
+      });
+    })
     .catch(err =>
       changeErrors({
         type: GET_ERRORS,
@@ -32,15 +37,35 @@ export const getPostsAction = changePost => {
   changePost(setPostLoading());
   axios
     .get("/api/posts/")
-    .then(res =>
+    .then(res => {
       changePost({
         type: GET_POSTS,
+        payload: res.data
+      });
+    })
+    .catch(err =>
+      changePost({
+        type: GET_POSTS,
+        payload: null
+      })
+    );
+};
+
+// Get Posts
+//Получить посты
+export const getPostAction = (id, changePost) => {
+  changePost(setPostLoading());
+  axios
+    .get(`/api/posts/${id}`)
+    .then(res =>
+      changePost({
+        type: GET_POST,
         payload: res.data
       })
     )
     .catch(err =>
       changePost({
-        type: GET_POSTS,
+        type: GET_POST,
         payload: null
       })
     );
@@ -70,7 +95,9 @@ export const deletePostAction = (id, changePost, changeErrors) => {
 export const addLikeAction = (id, changePost, changeErrors) => {
   axios
     .post(`/api/posts/like/${id}`)
-    .then(res => getPostsAction(changePost))
+    .then(res => {
+      getPostsAction(changePost);
+    })
     .catch(err =>
       changeErrors({
         type: GET_ERRORS,
@@ -85,6 +112,34 @@ export const removeLikeAction = (id, changePost, changeErrors) => {
   axios
     .post(`/api/posts/unlike/${id}`)
     .then(res => getPostsAction(changePost))
+    .catch(err =>
+      changeErrors({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Add Comment
+// Добавить комментарий
+export const addCommentAction = (
+  postId,
+  newComment,
+  changePost,
+  changeErrors
+) => {
+  axios
+    .post(`/api/posts/comment/${postId}`, newComment)
+    .then(res => {
+      changePost({
+        type: ADD_POST,
+        payload: res.data
+      });
+      changeErrors({
+        type: GET_ERRORS,
+        payload: {}
+      });
+    })
     .catch(err =>
       changeErrors({
         type: GET_ERRORS,

@@ -38,7 +38,8 @@ CustomLink.propTypes = {
   btnLight: PropTypes.bool,
   padding: PropTypes.bool,
   marginRight: PropTypes.bool,
-  marginLeft: PropTypes.bool
+  marginLeft: PropTypes.bool,
+  marginBottom: PropTypes.bool
 };
 
 export default CustomLink;

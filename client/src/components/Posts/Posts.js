@@ -4,11 +4,11 @@ import { ErrorContext } from "../../context/ErrorContext";
 import { PostContext } from "../../context/PostContext";
 import { AuthContext } from "../../context/AuthContext";
 import PostForm from "./PostForm";
-import PostFeed from "./PostFeed";
+import PostFeed from "./PostsFeed";
 import { Spinner } from "../";
 import { getPostsAction } from "../../actions/postActions";
 
-const Post = () => {
+const Posts = () => {
   const { theme } = useContext(ThemeContext);
   const { errors, changeErrors } = useContext(ErrorContext);
   const { post, changePost } = useContext(PostContext);
@@ -48,4 +48,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default Posts;
