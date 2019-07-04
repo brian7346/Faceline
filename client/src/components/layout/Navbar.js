@@ -30,14 +30,14 @@ const Navbar = () => {
   const authLinks = (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item ">
-        <CustomLink title="Лента" navLink padding to="feed" />
+        <CustomLink title="Лента" navLink padding to="/feed" />
       </li>
       <li className="nav-item ">
         <CustomLink
           title="Управление аккаунтом"
           navLink
           padding
-          to="dashboard"
+          to="/dashboard"
         />
       </li>
       <li className="nav-item ">
@@ -62,7 +62,7 @@ const Navbar = () => {
   const guestLinks = (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item ">
-        <CustomLink title="Войти" navLink padding to="login" />
+        <CustomLink title="Войти" navLink padding to="/login" />
       </li>
     </ul>
   );
@@ -88,7 +88,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="mobile-nav">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <CustomLink title="Пользователи" navLink to="profiles" />
+              <CustomLink title="Пользователи" navLink to="/profiles" />
             </li>
           </ul>
 

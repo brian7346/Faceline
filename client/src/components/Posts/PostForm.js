@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { CustomTextArea, CustomButton } from "../";
 import { addPostAction } from "../../actions/postActions";
 import classNames from "classnames";
+import { GET_ERRORS } from "../../actions/types";
 
 const PostForm = props => {
   const { errors, darkMode, auth, changePost, changeErrors } = props;
@@ -35,7 +36,14 @@ const PostForm = props => {
     "card-body": true,
     "dark-bg-second ": darkMode
   });
-
+  useEffect(() => {
+    return () => {
+      changeErrors({
+        type: GET_ERRORS,
+        payload: {}
+      });
+    };
+  }, []);
   return (
     <div className="post-form mb-3">
       <div className="card card-info">

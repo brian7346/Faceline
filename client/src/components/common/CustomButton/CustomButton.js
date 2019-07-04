@@ -40,7 +40,9 @@ CustomButton.propTypes = {
   marginRight: PropTypes.bool,
   marginBottom: PropTypes.bool,
   onClick: PropTypes.func,
-  btnDanger: PropTypes.bool
+  btnDanger: PropTypes.bool,
+  btnLight: PropTypes.bool,
+  btnBlock: PropTypes.bool
 };
 
 CustomButton.defaultProps = {
