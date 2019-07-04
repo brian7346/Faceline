@@ -1,12 +1,16 @@
-import React from "react";
-import classNames from "classnames";
-import PropTypes from "prop-types";
+import React, { useContext } from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import { ThemeContext } from '../../../context/ThemeContext';
 
 const CustomInput = props => {
+  const { theme } = useContext(ThemeContext);
+
   let inputClassNames = classNames({
-    "form-control ": true,
-    "form-control-lg": true,
-    "is-invalid": props.errors[props.name]
+    'form-control ': true,
+    'form-control-lg': true,
+    'dark-bg': theme.darkMode,
+    'is-invalid': props.errors[props.name]
   });
 
   return (
@@ -43,8 +47,8 @@ CustomInput.propTypes = {
 };
 
 CustomInput.defaultProps = {
-  type: "text",
-  placeholder: "",
+  type: 'text',
+  placeholder: '',
   errors: {}
 };
 

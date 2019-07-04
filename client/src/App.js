@@ -21,12 +21,14 @@ import {
   AddEducation,
   Profiles,
   Profile,
-  NotFound
+  NotFound,
+  Post
 } from "./components";
 import { AuthContext } from "./context/AuthContext";
 import { ErrorProvider } from "./context/ErrorContext";
 import { ProfileContext } from "./context/ProfileContext";
 import { ThemeContext } from "./context/ThemeContext";
+import { PostProvider } from "./context/PostContext";
 import { changeThemeAction } from "./actions/themeActions";
 
 const App = () => {
@@ -105,6 +107,11 @@ const App = () => {
                 component={AddEducation}
               />
             </Switch>
+            <PostProvider>
+              <Switch>
+                <PrivateRoute exact path="/feed" component={Post} />
+              </Switch>
+            </PostProvider>
             <Route exact path="/not-found" component={NotFound} />
           </ErrorProvider>
         </div>

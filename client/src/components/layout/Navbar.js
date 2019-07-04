@@ -15,7 +15,7 @@ const Navbar = () => {
 
   let navbarClassNames = classNames({
     navbar: true,
-    "navbar-expand-sm": true,
+    "navbar-expand-md": true,
     "mb-4": false,
     "current-bg": !theme.darkMode,
     "dark-bg": theme.darkMode
@@ -29,6 +29,9 @@ const Navbar = () => {
 
   const authLinks = (
     <ul className="navbar-nav ml-auto">
+      <li className="nav-item ">
+        <CustomLink title="Лента" navLink padding to="feed" />
+      </li>
       <li className="nav-item ">
         <CustomLink
           title="Управление аккаунтом"

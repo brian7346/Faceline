@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 const InputGroup = props => {
+  const { theme } = useContext(ThemeContext);
+
   let inputClassNames = classNames({
     "form-control ": true,
     "form-control-lg": true,
+    "dark-bg": theme.darkMode,
     "is-invalid": props.errors[props.name]
   });
 
