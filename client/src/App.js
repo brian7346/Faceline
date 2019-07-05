@@ -33,7 +33,7 @@ import { PostProvider } from "./context/PostContext";
 import { changeThemeAction } from "./actions/themeActions";
 
 const App = () => {
-  const { auth, changleAuth } = useContext(AuthContext);
+  const { changleAuth } = useContext(AuthContext);
   const { changeProfile } = useContext(ProfileContext);
   const { changeTheme } = useContext(ThemeContext);
 
@@ -64,7 +64,7 @@ const App = () => {
     if (JSON.parse(localStorage.getItem("darkMode"))) {
       changeTheme(changeThemeAction());
     }
-  }, []);
+  }, [changeProfile, changeTheme, changleAuth]);
 
   return (
     <AppWrapper>
