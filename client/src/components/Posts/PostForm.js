@@ -43,6 +43,7 @@ const PostForm = props => {
         payload: {}
       });
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="post-form mb-3">

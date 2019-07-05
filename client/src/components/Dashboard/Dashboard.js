@@ -28,6 +28,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getCurrentProfileAction(changeProfile, changeErrors);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (profile.profile === null || profile.loading) {

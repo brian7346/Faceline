@@ -19,7 +19,6 @@ const PostsItem = props => {
   const { changePost } = useContext(PostContext);
 
   const { post, showActions } = props;
-
   const onDeleteClick = id => {
     deletePostAction(id, changePost, changeErrors);
   };

@@ -21,6 +21,7 @@ const CreateProfile = props => {
         payload: {}
       });
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [displaySocialInput, changeDisplaySocialInput] = useState(false);
