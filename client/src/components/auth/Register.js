@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { CustomButton, CustomInput } from "../";
-import { ErrorContext } from "context/ErrorContext";
-import { AuthContext } from "context/AuthContext";
-import { registerUserAction } from "actions/authActions";
+import { ErrorContext } from "../../context/ErrorContext";
+import { AuthContext } from "../../context/AuthContext";
+import { registerUserAction } from "../../actions/authActions";
 
 const Register = props => {
   const { errors, changeErrors } = useContext(ErrorContext);

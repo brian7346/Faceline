@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { errorReducer, initialState } from "reducers/errorReducer";
+import { errorReducer, initialState } from "../reducers/errorReducer";
 
 let ErrorContext = React.createContext();
 
