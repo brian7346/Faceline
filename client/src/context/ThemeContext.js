@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { themeReducer, initialState } from "../reducers/themeReducer";
+import { themeReducer, initialState } from "reducers/themeReducer";
 
 let ThemeContext = React.createContext();
 

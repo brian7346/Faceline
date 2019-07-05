@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { profileReducer, initialState } from "../reducers/profileReducer";
+import { profileReducer, initialState } from "reducers/profileReducer";
 
 let ProfileContext = React.createContext();
 

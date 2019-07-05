@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
-import { ErrorContext } from "../../context/ErrorContext";
+import { AuthContext } from "context/AuthContext";
+import { ErrorContext } from "context/ErrorContext";
 import { CustomButton, CustomInput } from "../";
-import { loginUserAction } from "../../actions/authActions";
+import { loginUserAction } from "actions/authActions";
 
 const Login = props => {
   const { auth, changleAuth } = useContext(AuthContext);

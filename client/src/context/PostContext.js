@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { postReducer, initialState } from "../reducers/postReducer";
+import { postReducer, initialState } from "reducers/postReducer";
 
 let PostContext = React.createContext();
 
