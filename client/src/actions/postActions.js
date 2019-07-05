@@ -132,7 +132,35 @@ export const addCommentAction = (
     .post(`/api/posts/comment/${postId}`, newComment)
     .then(res => {
       changePost({
-        type: ADD_POST,
+        type: GET_POST,
+        payload: res.data
+      });
+      changeErrors({
+        type: GET_ERRORS,
+        payload: {}
+      });
+    })
+    .catch(err =>
+      changeErrors({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Delete Comment
+// Удалить комментарий
+export const deleteCommentAction = (
+  postId,
+  commentId,
+  changePost,
+  changeErrors
+) => {
+  axios
+    .delete(`/api/posts/comment/${postId}/${commentId}`)
+    .then(res => {
+      changePost({
+        type: GET_POST,
         payload: res.data
       });
       changeErrors({

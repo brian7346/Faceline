@@ -4,6 +4,7 @@ import { Spinner, CustomLink } from "../";
 import { getPostAction } from "../../actions/postActions";
 import PostItem from "../Posts/Postsitem";
 import CommentForm from "./CommentForm";
+import CommentFeed from "./CommentFeed";
 
 const Post = props => {
   const { id } = props.match.params;
@@ -19,6 +20,7 @@ const Post = props => {
       <>
         <PostItem post={post.post} showActions={false} />
         <CommentForm postId={post.post._id} />
+        <CommentFeed postId={post.post._id} comments={post.post.comments} />
       </>
     );
   }
