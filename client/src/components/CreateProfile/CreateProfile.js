@@ -58,7 +58,6 @@ const CreateProfile = props => {
       handle: profileHandle,
       company,
       website,
-      website,
       location,
       status,
       skills,

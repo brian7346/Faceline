@@ -1,5 +1,4 @@
 import React from "react";
-import spinner from "./spinner.gif";
 import "./Spinner.scss";
 
 export default () => {

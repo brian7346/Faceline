@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { CustomTextArea, CustomButton } from "../";
 import { addCommentAction } from "../../actions/postActions";
@@ -9,10 +9,10 @@ import { PostContext } from "../../context/PostContext";
 import classNames from "classnames";
 
 const CommentForm = props => {
-  const { auth } = React.useContext(AuthContext);
-  const { theme } = React.useContext(ThemeContext);
-  const { errors, changeErrors } = React.useContext(ErrorContext);
-  const { changePost } = React.useContext(PostContext);
+  const { auth } = useContext(AuthContext);
+  const { theme } = useContext(ThemeContext);
+  const { errors, changeErrors } = useContext(ErrorContext);
+  const { changePost } = useContext(PostContext);
   const { darkMode } = theme;
 
   const [text, changeText] = useState("");

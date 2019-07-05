@@ -3,12 +3,10 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 const ProfileGitHub = props => {
-  const [clientId, changeClientId] = useState("59dbb5c7254052a001de");
-  const [clientSecret, changeClientSecret] = useState(
-    "41284f2457a4fce653a9ed1b8d08a15b0ab32d90"
-  );
-  const [count, changeCount] = useState(5);
-  const [sort, changeSort] = useState("created: asc");
+  const [clientId] = useState("59dbb5c7254052a001de");
+  const [clientSecret] = useState("41284f2457a4fce653a9ed1b8d08a15b0ab32d90");
+  const [count] = useState(5);
+  const [sort] = useState("created: asc");
   const [repos, changeRepos] = useState([]);
 
   let githubRef;

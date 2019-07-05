@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { ErrorContext } from "../../context/ErrorContext";
 import { PostContext } from "../../context/PostContext";

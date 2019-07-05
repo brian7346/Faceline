@@ -18,7 +18,7 @@ import {
 const Dashboard = () => {
   const { profile, changeProfile } = useContext(ProfileContext);
   const { auth, changleAuth } = useContext(AuthContext);
-  const { errors, changeErrors } = useContext(ErrorContext);
+  const { changeErrors } = useContext(ErrorContext);
 
   let dashbordContent;
 

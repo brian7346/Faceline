@@ -23,7 +23,6 @@ const CommentItem = props => {
   const cardBodyClassNames = classNames({
     "card-body": true,
     "mb-3": true,
-    "card-body": true,
     "dark-bg-second ": darkMode,
     "white-border": darkMode
   });

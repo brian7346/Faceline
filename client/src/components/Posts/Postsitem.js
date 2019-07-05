@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { ThemeContext } from "../../context/ThemeContext";
 import { ErrorContext } from "../../context/ErrorContext";
 import { PostContext } from "../../context/PostContext";
-import { CustomLink, CustomButton } from "..";
+import { CustomLink } from "..";
 import {
   deletePostAction,
   addLikeAction,
@@ -13,10 +13,10 @@ import {
 } from "../../actions/postActions";
 
 const PostsItem = props => {
-  const { auth } = React.useContext(AuthContext);
-  const { theme } = React.useContext(ThemeContext);
-  const { changeErrors } = React.useContext(ErrorContext);
-  const { changePost } = React.useContext(PostContext);
+  const { auth } = useContext(AuthContext);
+  const { theme } = useContext(ThemeContext);
+  const { changeErrors } = useContext(ErrorContext);
+  const { changePost } = useContext(PostContext);
 
   const { post, showActions } = props;
 

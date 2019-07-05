@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./utils/setAuthToken";
 import { setCurrentUser, logoutUserAction } from "../src/actions/authActions";

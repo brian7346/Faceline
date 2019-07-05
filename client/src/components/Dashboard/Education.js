@@ -8,8 +8,8 @@ import { deleteEducationAction } from "../../actions/profileActions";
 import Moment from "react-moment";
 
 const Education = props => {
-  const { changeProfile } = React.useContext(ProfileContext);
-  const { changeErrors } = React.useContext(ErrorContext);
+  const { changeProfile } = useContext(ProfileContext);
+  const { changeErrors } = useContext(ErrorContext);
 
   const onDelete = id => {
     deleteEducationAction(id, changeProfile, changeErrors);
