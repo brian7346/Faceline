@@ -1,7 +1,12 @@
 import { SET_CURRENT_USER } from "../actions/types";
 import { isEmpty } from "../validation/is-empty";
 
-let authReducer = (state, action) => {
+export let initialState = {
+  isAuthenticated: false,
+  user: {}
+};
+
+export let authReducer = (state, action) => {
   switch (action.type) {
     case SET_CURRENT_USER:
       return {
@@ -13,5 +18,3 @@ let authReducer = (state, action) => {
       return state;
   }
 };
-
-export default authReducer;

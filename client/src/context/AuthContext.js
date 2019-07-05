@@ -1,10 +1,5 @@
 import React, { useReducer } from "react";
-import { authReducer } from "../reducers";
-
-let initialState = {
-  isAuthenticated: false,
-  user: {}
-};
+import { authReducer, initialState } from "../reducers/authReducer";
 
 let AuthContext = React.createContext();
 
