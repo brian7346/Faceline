@@ -19,11 +19,12 @@ const Profile = props => {
     }
   }, []);
 
-  useEffect(() => {
-    if (profile.profile === null && profile.loading) {
-      props.history.push("/not-found");
-    }
-  });
+//   //TODO: Redirect если профиль не найден
+//   useEffect(() => {
+//     if (profile.profile === null && profile.loading) {
+//       props.history.push("/not-found");
+//     }
+//   });
 
   let profileContent;
   if (profile.profile === null || profile.loading) {
