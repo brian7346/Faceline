@@ -6,13 +6,18 @@ This is a MERN stack application. It is a small social network app that includes
 ## Quick Start
 
 ```
-# change default.json file in config folder
+# delte keys.js file in config folder
 
-# this file is located in config/default.json
+# rename the file keys_prod.js to keys.js
+
+# this file is located in config/keys.json
 
 # add uri of your mongodb connection for example
 
  "mongoURI": "mongodb://localhost/dev-social",
+# add secretOrKey, for example
+
+ secretOrKey: "secret"
  ```
 
 ```
